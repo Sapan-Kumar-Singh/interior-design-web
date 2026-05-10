@@ -1,26 +1,153 @@
+/* ─────────────────────────────────────────
+   Lumière Interior Design — globals.css
+   Tailwind v4 + shadcn/ui + custom theme
+───────────────────────────────────────── */
+
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ── Map CSS vars → Tailwind utilities ── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:        var(--background);
+  --color-foreground:        var(--foreground);
+
+  --color-primary:           var(--primary);
+  --color-primary-foreground:var(--primary-foreground);
+
+  --color-secondary:         var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+
+  --color-accent:            var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted:             var(--muted);
+  --color-muted-foreground:  var(--muted-foreground);
+
+  --color-border:            var(--border);
+  --color-input:             var(--input);
+  --color-ring:              var(--ring);
+
+  /* ── Interior design brand tokens ── */
+  --color-gold:              var(--gold);
+  --color-gold-light:        var(--gold-light);
+  --color-gold-dark:         var(--gold-dark);
+  --color-gold-muted:        var(--gold-muted);
+  --color-cream:             var(--cream);
+  --color-cream-dark:        var(--cream-dark);
+  --color-obsidian:          var(--obsidian);
+  --color-text-body:         var(--text-body);
+  --color-text-muted:        var(--text-muted);
+  --color-text-hint:         var(--text-hint);
+  --color-overlay:           var(--overlay);
+
+  --radius:                  var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Light Theme ──────────────────────── */
+:root {
+  /* Backgrounds */
+  --background:       oklch(0.97 0.008 80);    /* Linen Cream #F5F0E8 */
+  --foreground:       oklch(0.14 0.005 60);    /* Obsidian #1A1A1A */
+
+  /* Primary = Gold (buttons, links, CTAs) */
+  --primary:          oklch(0.72 0.1 75);      /* Gold #C9A96E */
+  --primary-foreground:oklch(0.14 0.005 60);   /* Dark text on gold */
+
+  /* Secondary = Warm off-white surface */
+  --secondary:        oklch(0.95 0.008 80);    /* #EEEBE3 warm white */
+  --secondary-foreground:oklch(0.2 0.005 60);  /* #2E2B28 dark warm */
+
+  /* Accent = Deep gold for hover states */
+  --accent:           oklch(0.65 0.09 75);     /* Gold-dark #A07840 */
+  --accent-foreground:oklch(0.98 0 0);         /* White on dark gold */
+
+  /* Muted = light cream surface */
+  --muted:            oklch(0.93 0.01 80);     /* #E8E2D9 border/divider */
+  --muted-foreground: oklch(0.46 0.01 60);     /* #6B6560 muted text */
+
+  /* Borders & inputs */
+  --border:           oklch(0.9 0.01 80);      /* #E8E2D9 warm border */
+  --input:            oklch(0.93 0.008 80);    /* Slightly darker */
+  --ring:             oklch(0.72 0.1 75);      /* Gold focus ring */
+
+  /* ── Brand tokens (use directly) ── */
+  --gold:             oklch(0.72 0.1 75);      /* #C9A96E */
+  --gold-light:       oklch(0.88 0.06 80);     /* #E8D5B0 */
+  --gold-dark:        oklch(0.58 0.09 72);     /* #A07840 */
+  --gold-muted:       oklch(0.95 0.03 80);     /* #F7EDD8 tag bg */
+  --cream:            oklch(0.97 0.008 80);    /* #F5F0E8 */
+  --cream-dark:       oklch(0.93 0.01 80);     /* #E8E2D9 */
+  --obsidian:         oklch(0.14 0.005 60);    /* #1A1A1A */
+  --text-body:        oklch(0.2 0.005 60);     /* #2E2B28 */
+  --text-muted:       oklch(0.46 0.01 60);     /* #6B6560 */
+  --text-hint:        oklch(0.68 0.008 60);    /* #B0A898 */
+  --overlay:          oklch(0.14 0.005 60 / 62%); /* rgba(13,13,13,0.62) */
+
+  --radius: 0.5rem;  /* Sharp — suits luxury design */
+}
+
+/* ── Dark Theme ───────────────────────── */
+.dark {
+  --background:       oklch(0.12 0.004 60);    /* #1A1A1A deep obsidian */
+  --foreground:       oklch(0.97 0.008 80);    /* Cream white #F5F0E8 */
+
+  --primary:          oklch(0.72 0.1 75);      /* Gold — same in dark */
+  --primary-foreground:oklch(0.14 0.005 60);   /* Dark text on gold */
+
+  --secondary:        oklch(0.2 0.005 60);     /* #2E2B28 dark surface */
+  --secondary-foreground:oklch(0.9 0.008 80);  /* Cream text */
+
+  --accent:           oklch(0.25 0.008 60);    /* Darker surface */
+  --accent-foreground:oklch(0.88 0.06 80);     /* Gold-light text */
+
+  --muted:            oklch(0.22 0.005 60);    /* Dark muted surface */
+  --muted-foreground: oklch(0.68 0.008 60);    /* #B0A898 hint text */
+
+  --border:           oklch(1 0 0 / 10%);      /* Subtle white border */
+  --input:            oklch(1 0 0 / 14%);      /* Input slightly brighter */
+  --ring:             oklch(0.72 0.1 75);      /* Gold focus ring */
+
+  /* Brand tokens — adjusted for dark bg */
+  --gold:             oklch(0.72 0.1 75);      /* Same gold on dark */
+  --gold-light:       oklch(0.88 0.06 80);     /* Lighter for text */
+  --gold-dark:        oklch(0.58 0.09 72);     /* For borders */
+  --gold-muted:       oklch(0.22 0.04 75);     /* Tag bg on dark */
+  --cream:            oklch(0.97 0.008 80);    /* Cream text */
+  --cream-dark:       oklch(1 0 0 / 12%);      /* Dividers on dark */
+  --obsidian:         oklch(0.12 0.004 60);    /* Page bg */
+  --text-body:        oklch(0.88 0.008 80);    /* Body text on dark */
+  --text-muted:       oklch(0.68 0.008 60);    /* Muted on dark */
+  --text-hint:        oklch(0.46 0.01 60);     /* Hint on dark */
+  --overlay:          oklch(0 0 0 / 70%);       /* Stronger overlay on dark */
+}
+
+/* ── Base styles ──────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  /* Remove default radius for sharp luxury feel */
+  button, input, select, textarea {
+    @apply rounded-none; /* override with rounded-* per component */
+  }
+  /* Selection color = gold */
+  ::selection {
+    background-color: var(--gold);
+    color: var(--obsidian);
+  }
+  /* Scrollbar (webkit) */
+  ::-webkit-scrollbar { width: 6px }
+  ::-webkit-scrollbar-track { background: var(--cream-dark) }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold) }
 }

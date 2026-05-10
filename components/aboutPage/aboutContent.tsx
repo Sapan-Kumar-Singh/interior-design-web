@@ -1,0 +1,192 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { Button } from "../ui/button";
+import { ArrowUpRight, Layers, NotebookText, Wrench } from "lucide-react";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "../ui/card";
+import { motion } from "framer-motion";
+import Stats from "../stats";
+import VideoPlayer from "../videoPlayer";
+import { container, imageRight, textItem } from "../animationConfig/about";
+
+
+
+
+// FEATURE CARDS (alternate entry)
+const featureItem = (i: number) => ({
+    hidden: {
+        opacity: 0,
+        x: i % 2 === 0 ? -60 : 60,
+        scale: 0.96,
+    },
+    show: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        transition: { duration: 0.7 },
+    },
+});
+
+const features = [
+    {
+        icon: <Layers size={18} />,
+        title: "Customized Design Solutions",
+        content:
+            "We tailor every project to your lifestyle, preferences, and budget with precision.",
+    },
+    {
+        icon: <Wrench size={18} />,
+        title: "Premium Materials & Finishes",
+        content:
+            "Only the finest materials make it into your home — beauty that lasts decades.",
+    },
+    {
+        icon: <NotebookText size={18} />,
+        title: "Transparent Pricing & Planning",
+        content:
+            "No surprises. Clear quotes, honest timelines, and full accountability.",
+    },
+];
+
+const AboutContent = () => {
+
+    return (
+        <section className="bg-white w-full px-6 sm:px-10 lg:px-20  py-6 overflow-hidden">
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+                {/* ══ LEFT SIDE ═════════════════════════════════ */}
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}   // 👈 IMPORTANT FIX
+                    className="space-y-7"
+                >
+
+                    <motion.h1 variants={textItem} className="flex items-center gap-3 text-gold text-lg font-semibold capitalize">
+                        About Us
+                    </motion.h1>
+
+                    <motion.h2 variants={textItem} className="font-semibold text-2xl sm:text-3xl lg:text-3xl font-serif">
+                        Modern Kitchen And Bathroom{" "}
+                        <em className="italic text-gold-dark">Renovations</em>{" "}
+                        built for Living
+                    </motion.h2>
+
+                    <motion.p variants={textItem} className="text-[14px] text-obsidian max-w-xl">
+                        Bathora is dedicated to transforming kitchens and bathrooms into elegant, functional spaces that elevate everyday living. With years of experience and a passion for design, we bring creativity, precision, and quality into every project we undertake. From concept to completion, our team works closely with homeowners to understand their vision
+                    </motion.p>
+
+                    {/* VIDEO + STATS + BUTTON WRAPPER */}
+                    <motion.div variants={textItem}>
+                        <div
+                            className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 items-stretch"
+                        >
+                            {/* VIDEO (left side on lg) */}
+                            <div >
+                                <VideoPlayer src="/videos/about-content.mp4" posterSrc="/images/thumbnail.jpg" />
+                            </div>
+
+                            {/* STATS + BUTTON (right side on lg) */}
+                            <div className="flex flex-col justify-start gap-4">
+                                <motion.div variants={textItem}>
+                                    <Stats
+                                        stats={[
+                                            { end: 15, suffix: "+", label: "Years of Experience" },
+                                        ]}
+                                    />
+                                </motion.div>
+
+                                <motion.div
+                                    variants={textItem}
+                                    className="flex justify-center w-full lg:justify-start"
+                                >
+                                    <Button className="bg-gold w-full text-cream text-sm px-7 py-5 rounded-sm w-fit hover:bg-gold/80">
+                                        Discover our story <ArrowUpRight size={14} />
+                                    </Button>
+                                </motion.div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+
+
+                </motion.div>
+
+
+                {/* ══ RIGHT IMAGE + FEATURES ═══════════════════════════════ */}
+                <motion.div
+                    variants={imageRight}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}
+                    className="space-y-8 relative"
+                >
+
+                    {/* IMAGE */}
+                    <div
+                        className="relative h-[360px] sm:h-[480px] lg:h-[500px]
+                        rounded-2xl overflow-hidden"
+                    >
+                        <Image
+                            src="/images/about/about-content.jpg"
+                            alt="Kitchen"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+
+                    {/* FEATURES (moved here) */}
+                    <motion.div
+                        variants={container}
+                        viewport={{ once: true, amount: 0.3 }}
+                        className="
+                       grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4
+                       relative
+                       lg:-ml-[260px]
+                       xl:-ml-[260px]
+                       mt-6
+                       "
+                    >
+                        {features.map((f, i) => (
+                            <motion.div
+                                key={i}
+                                variants={featureItem(i)}
+                                viewport={{ once: true, amount: 0.3 }}
+                                whileInView="show"
+                                initial="hidden"
+                                whileHover={{ y: -6 }}
+                            >
+                                <Card className="rounded-sm bg-cream shadow-sm h-full">
+                                    <CardHeader>
+                                        <div className="w-10 h-10 bg-gold/10 flex items-center justify-center text-gold rounded-full">
+                                            {f.icon}
+                                        </div>
+                                        <CardTitle className="text-[13px]">{f.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <CardDescription className="text-[12px]">
+                                            {f.content}
+                                        </CardDescription>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                </motion.div>
+
+            </div>
+        </section>
+    );
+};
+
+export default AboutContent;
