@@ -4,6 +4,8 @@ import HeroSectionForm from './heroSectionForm';
 import HeroContent from './heroContent';
 import Stats from '@/components/stats';
 import AboutPreview from '../aboutPreview';
+import ServicePreview from '../servicePreview';
+import GetEstimatePreview from '../getEstimatePreview';
 
 
 const HeroSection = () => {
@@ -37,6 +39,8 @@ const HeroSection = () => {
                  <Stats stats={stats} className='bg-cream-dark p-4 m-4 rounded-lg'/>
             </div>
             <AboutPreview/>
+            <ServicePreview/>
+            <GetEstimatePreview/>
         </main>
     )
 }

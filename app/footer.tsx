@@ -6,34 +6,8 @@ import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "@/compone
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-const fadeUp = (delay = 0) => ({
-    hidden: { opacity: 0, y: 30 },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: "easeOut", delay },
-    },
-} as const);
+import { slideUp, staggerContainer } from "@/lib/animation";
 
-const fadeLeft = {
-    hidden: { opacity: 0, x: -30 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-} as const;
-
-const fadeRight = {
-    hidden: { opacity: 0, x: 30 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-} as const;
-
-const staggerContainer = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.1 } },
-} as const;
-
-const listItem = {
-    hidden: { opacity: 0, x: -10 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-} as const;
 
 const socialIcons = {
     facebook: <FacebookIcon />,
@@ -84,7 +58,7 @@ const Footer = () => {
 
                     {/* HEADING */}
                     <motion.h2
-                        variants={fadeLeft}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.3 }}
@@ -95,7 +69,7 @@ const Footer = () => {
 
                     {/* DESCRIPTION */}
                     <motion.p
-                        variants={fadeUp(0.1)}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
@@ -107,7 +81,7 @@ const Footer = () => {
 
                     {/* INPUT + BUTTON */}
                     <motion.div
-                        variants={fadeRight}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.3 }}
@@ -118,7 +92,7 @@ const Footer = () => {
                             placeholder="Email Address"
                             className="bg-cream text-obsidian placeholder:text-gray-400  border-0 rounded-sm  px-4  py-4  text-sm  focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0 outline-none w-full"
                         />
-                        <Button className=" bg-gold   hover:bg-gold/80  text-white text-sm font-semibold rounded-sm  py-2   h-auto   border-0  cursor-pointer transition-all duration-200">
+                        <Button>
                             Subscribe
                         </Button>
                     </motion.div>
@@ -132,7 +106,7 @@ const Footer = () => {
 
                     {/* COL 1 — BRAND */}
                     <motion.div
-                        variants={fadeUp(0)}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
@@ -161,7 +135,7 @@ const Footer = () => {
                                 <motion.a
                                     key={key}
                                     href="#"
-                                    variants={listItem}
+                                    variants={slideUp}
                                     whileHover={{ y: -3, scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
                                     className=" w-9 h-9 rounded-full border border-white/20 flex items-center justify-center  text-white/60 hover:text-white  hover:border-white/50 transition-colors duration-200 ">
@@ -173,7 +147,7 @@ const Footer = () => {
 
                     {/* COL 2 — QUICK LINKS */}
                     <motion.div
-                        variants={fadeUp(0.1)}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
@@ -189,7 +163,7 @@ const Footer = () => {
                             className="space-y-3"
                         >
                             {quickLinks.map(({ label, href, badge }) => (
-                                <motion.li key={label} variants={listItem}>
+                                <motion.li key={label} variants={slideUp}>
                                     <Link
                                         href={href}
                                         className="flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors duration-200  group">
@@ -209,7 +183,7 @@ const Footer = () => {
 
                     {/* COL 3 — SERVICES */}
                     <motion.div
-                        variants={fadeUp(0.2)}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
@@ -225,7 +199,7 @@ const Footer = () => {
                             className="space-y-3"
                         >
                             {services.map(({ label, href, badge }) => (
-                                <motion.li key={label} variants={listItem}>
+                                <motion.li key={label} variants={slideUp}>
                                     <Link
                                         href={href}
                                         className="flex items-center gap-2  text-white/50 hover:text-white  text-sm transition-colors duration-200  group">
@@ -245,7 +219,7 @@ const Footer = () => {
 
                     {/* COL 4 — CONTACT */}
                     <motion.div
-                        variants={fadeUp(0.3)}
+                        variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
@@ -263,7 +237,7 @@ const Footer = () => {
                             {contactInfo.map(({ icon, label }) => (
                                 <motion.li
                                     key={label}
-                                    variants={listItem}
+                                    variants={slideUp}
                                     className="flex items-start gap-3 text-sm text-white/50"
                                 >
                                     <span className="mt-0.5 shrink-0">{icon}</span>
@@ -278,7 +252,7 @@ const Footer = () => {
 
             {/* BOTTOM BAR */}
             <motion.div
-                variants={fadeUp(0.4)}
+                variants={slideUp}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}

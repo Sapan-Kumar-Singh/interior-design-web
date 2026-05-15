@@ -64,7 +64,7 @@ export default function VideoPlayer({
             className="
               absolute inset-0
               flex items-center justify-center
-              bg-black/30
+              bg-obsidian/20
               rounded-xl
               cursor-pointer
             "

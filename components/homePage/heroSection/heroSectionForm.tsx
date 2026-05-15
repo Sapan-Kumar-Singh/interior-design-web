@@ -6,13 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Star } from "lucide-react";
-import { fadeUpFromSide } from "@/components/animationConfig/home";
+import { rotateRevealRight} from "@/lib/animation";
 
 
 export default function HeroSectionForm() {
     return (
         <motion.div
-            variants={fadeUpFromSide}
+            variants={rotateRevealRight}
             initial="hidden"
             animate="show"
             className="w-full lg:self-end"
@@ -73,11 +73,7 @@ export default function HeroSectionForm() {
                         placeholder:text-text-hint transition-colors duration-200"
                     />
 
-                    <Button
-                        className="w-full bg-gold hover:bg-gold/80 text-cream
-                        font-sans font-normal tracking-[0.16em] 
-                        text-[12px] py-5 rounded-sm"
-                    >
+                    <Button>
                         Request Free Estimate <ArrowUpRight size={12} />
                     </Button>
 

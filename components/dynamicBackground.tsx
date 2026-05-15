@@ -48,7 +48,7 @@ const slides = [
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-obsidian/20" />
       </div>
 
       {/* Content */}

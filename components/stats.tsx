@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react'
-import { container, item } from './animationConfig/home';
-import { Card } from './ui/card';
+import { fadeUpReveal, staggerContainerSlow } from '../lib/animation';
 
 interface Stats {
   end: number;
@@ -77,14 +76,14 @@ const Stats = ({ stats, className }: StatsProps) => {
   return (
     <section ref={statsRef}>
       <motion.div
-        variants={container}
+        variants={staggerContainerSlow}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         className={`grid gap-6 sm:gap-8 ${gridCols}`}
       >
         {stats.map(({ end, suffix, label }, index) => (
-          <motion.div key={label} variants={item}>
+          <motion.div key={label} variants={fadeUpReveal}>
             <div
               className={`flex flex-col items-center justify-center text-center  py-4 ${className ?? ""}`}
             >

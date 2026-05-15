@@ -1,21 +1,14 @@
 "use client"
 import { motion } from 'framer-motion'
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
+import { slideUp } from '../../lib/animation';
 
 interface CoverImageTextProps{
     title?:string;
     breadcrumbelement:ReactElement;
 }
-const CoverImageText = ({title,breadcrumbelement}:CoverImageTextProps) => {
+const CoverText = ({title,breadcrumbelement}:CoverImageTextProps) => {
 
- const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-} as const;
 
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center text-cream text-center z-10">
@@ -23,7 +16,7 @@ const CoverImageText = ({title,breadcrumbelement}:CoverImageTextProps) => {
       {/* Breadcrumb */}
       {breadcrumbelement &&  (
          <motion.div
-        variants={fadeUp}
+        variants={slideUp}
         initial="hidden"
         animate="show"
         className="flex items-center gap-2 text-lg font-semibold capitalize text-muted"
@@ -35,6 +28,7 @@ const CoverImageText = ({title,breadcrumbelement}:CoverImageTextProps) => {
 
       {/* Title */}
       {title &&  <motion.h2
+      variants={slideUp}
        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -52,4 +46,4 @@ const CoverImageText = ({title,breadcrumbelement}:CoverImageTextProps) => {
   )
 }
 
-export default CoverImageText
+export default CoverText

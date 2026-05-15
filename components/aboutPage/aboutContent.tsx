@@ -14,24 +14,37 @@ import {
 import { motion } from "framer-motion";
 import Stats from "../stats";
 import VideoPlayer from "../videoPlayer";
-import { container, imageRight, textItem } from "../animationConfig/about";
 
+import {
+    fadeRightReveal,
+    slideUp,
+    imageReveal,
+    staggerContainer,
+    staggerContainerSlow,
+} from "../../lib/animation";
 
-
-
-// FEATURE CARDS (alternate entry)
+// FEATURE CARDS
 const featureItem = (i: number) => ({
     hidden: {
         opacity: 0,
-        x: i % 2 === 0 ? -60 : 60,
-        scale: 0.96,
+        y: 40,
+        x: i % 2 === 0 ? -25 : 25,
+        scale: 0.98,
+        filter: "blur(4px)",
     },
+
     show: {
         opacity: 1,
+        y: 0,
         x: 0,
         scale: 1,
-        transition: { duration: 0.7 },
-    },
+        filter: "blur(0px)",
+
+        transition: {
+            duration: 0.85,
+            ease: [0.16, 1, 0.3, 1],
+        },
+    } as const,
 });
 
 const features = [
@@ -56,85 +69,103 @@ const features = [
 ];
 
 const AboutContent = () => {
-
     return (
-        <section className="bg-white w-full px-6 sm:px-10 lg:px-20  py-6 overflow-hidden">
+        <section className="bg-white w-full py-12 px-6 sm:px-10 lg:px-20 overflow-hidden">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-                {/* ══ LEFT SIDE ═════════════════════════════════ */}
+                {/* ═════════ LEFT SIDE ═════════ */}
                 <motion.div
-                    variants={container}
+                    variants={staggerContainer}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.25 }}   // 👈 IMPORTANT FIX
-                    className="space-y-7"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="space-y-7 will-change-transform"
                 >
 
-                    <motion.h1 variants={textItem} className="flex items-center gap-3 text-gold text-lg font-semibold capitalize">
+                    <motion.h1
+                        variants={slideUp}
+                        className="flex items-center gap-3 text-gold text-lg font-semibold capitalize"
+                    >
                         About Us
                     </motion.h1>
 
-                    <motion.h2 variants={textItem} className="font-semibold text-2xl sm:text-3xl lg:text-3xl font-serif">
+                    <motion.h2
+                        variants={slideUp}
+                        className="font-semibold text-2xl sm:text-3xl lg:text-3xl font-serif"
+                    >
                         Modern Kitchen And Bathroom{" "}
                         <em className="italic text-gold-dark">Renovations</em>{" "}
                         built for Living
                     </motion.h2>
 
-                    <motion.p variants={textItem} className="text-[14px] text-obsidian max-w-xl">
+                    <motion.p
+                        variants={slideUp}
+                        className="text-[14px] text-obsidian max-w-xl"
+                    >
                         Bathora is dedicated to transforming kitchens and bathrooms into elegant, functional spaces that elevate everyday living. With years of experience and a passion for design, we bring creativity, precision, and quality into every project we undertake. From concept to completion, our team works closely with homeowners to understand their vision
                     </motion.p>
 
-                    {/* VIDEO + STATS + BUTTON WRAPPER */}
-                    <motion.div variants={textItem}>
-                        <div
-                            className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 items-stretch"
-                        >
-                            {/* VIDEO (left side on lg) */}
-                            <div >
-                                <VideoPlayer src="/videos/about-content.mp4" posterSrc="/images/thumbnail.jpg" />
+                    {/* VIDEO + STATS + BUTTON */}
+                    <motion.div variants={fadeRightReveal}>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 items-stretch">
+
+                            {/* VIDEO */}
+                            <div>
+                                <VideoPlayer
+                                    src="/videos/about-content.mp4"
+                                    posterSrc="/images/thumbnail.jpg"
+                                />
                             </div>
 
-                            {/* STATS + BUTTON (right side on lg) */}
+                            {/* STATS + BUTTON */}
                             <div className="flex flex-col justify-start gap-4">
-                                <motion.div variants={textItem}>
-                                    <Stats
-                                        stats={[
-                                            { end: 15, suffix: "+", label: "Years of Experience" },
-                                        ]}
-                                    />
-                                </motion.div>
+
+                                <Stats
+                                    stats={[
+                                        {
+                                            end: 15,
+                                            suffix: "+",
+                                            label: "Years of Experience",
+                                        },
+                                    ]}
+                                />
 
                                 <motion.div
-                                    variants={textItem}
+                                    variants={slideUp}
                                     className="flex justify-center w-full lg:justify-start"
                                 >
-                                    <Button className="bg-gold w-full text-cream text-sm px-7 py-5 rounded-sm w-fit hover:bg-gold/80">
+                                    <Button>
                                         Discover our story <ArrowUpRight size={14} />
                                     </Button>
                                 </motion.div>
+
                             </div>
+
                         </div>
+
                     </motion.div>
-
-
 
                 </motion.div>
 
-
-                {/* ══ RIGHT IMAGE + FEATURES ═══════════════════════════════ */}
+                {/* ═════════ RIGHT SIDE ═════════ */}
                 <motion.div
-                    variants={imageRight}
+                    variants={imageReveal}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.25 }}
-                    className="space-y-8 relative"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="space-y-8 relative will-change-transform"
                 >
 
                     {/* IMAGE */}
                     <div
-                        className="relative h-[360px] sm:h-[480px] lg:h-[500px]
-                        rounded-2xl overflow-hidden"
+                        className="
+                            relative h-[360px]
+                            sm:h-[480px]
+                            lg:h-[500px]
+                            rounded-2xl overflow-hidden
+                        "
                     >
                         <Image
                             src="/images/about/about-content.jpg"
@@ -144,39 +175,51 @@ const AboutContent = () => {
                         />
                     </div>
 
-                    {/* FEATURES (moved here) */}
+                    {/* FEATURES */}
                     <motion.div
-                        variants={container}
-                        viewport={{ once: true, amount: 0.3 }}
+                        variants={staggerContainerSlow}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
                         className="
-                       grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4
-                       relative
-                       lg:-ml-[260px]
-                       xl:-ml-[260px]
-                       mt-6
-                       "
+                            grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4
+                            relative
+                            lg:-ml-[260px]
+                            xl:-ml-[260px]
+                            mt-6
+                        "
                     >
                         {features.map((f, i) => (
                             <motion.div
                                 key={i}
                                 variants={featureItem(i)}
-                                viewport={{ once: true, amount: 0.3 }}
-                                whileInView="show"
-                                initial="hidden"
-                                whileHover={{ y: -6 }}
+                                whileHover={{
+                                    y: -6,
+                                    transition: { duration: 0.25 },
+                                }}
                             >
                                 <Card className="rounded-sm bg-cream shadow-sm h-full">
+
                                     <CardHeader>
+
                                         <div className="w-10 h-10 bg-gold/10 flex items-center justify-center text-gold rounded-full">
                                             {f.icon}
                                         </div>
-                                        <CardTitle className="text-[13px]">{f.title}</CardTitle>
+
+                                        <CardTitle className="text-[13px]">
+                                            {f.title}
+                                        </CardTitle>
+
                                     </CardHeader>
+
                                     <CardContent>
+
                                         <CardDescription className="text-[12px]">
                                             {f.content}
                                         </CardDescription>
+
                                     </CardContent>
+
                                 </Card>
                             </motion.div>
                         ))}
@@ -185,6 +228,7 @@ const AboutContent = () => {
                 </motion.div>
 
             </div>
+
         </section>
     );
 };
