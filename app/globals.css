@@ -1,6 +1,7 @@
 /* ─────────────────────────────────────────
    Lumière Interior Design — globals.css
    Tailwind v4 + shadcn/ui + custom theme
+   Fonts: Cormorant Garamond + DM Sans
 ───────────────────────────────────────── */
 
 @import "tailwindcss";
@@ -9,145 +10,257 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ── Map CSS vars → Tailwind utilities ── */
 @theme inline {
-  --color-background:        var(--background);
-  --color-foreground:        var(--foreground);
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
 
-  --color-primary:           var(--primary);
-  --color-primary-foreground:var(--primary-foreground);
+  /* Brand tokens */
+  --color-gold:         var(--gold);
+  --color-gold-light:   var(--gold-light);
+  --color-gold-dark:    var(--gold-dark);
+  --color-gold-muted:   var(--gold-muted);
+  --color-cream:        var(--cream);
+  --color-cream-dark:   var(--cream-dark);
+  --color-obsidian:     var(--obsidian);
+  --color-sage:         var(--sage);
+  --color-sage-light:   var(--sage-light);
+  --color-text-body:    var(--text-body);
+  --color-text-muted:   var(--text-muted);
+  --color-text-hint:    var(--text-hint);
+  --color-overlay:      var(--overlay);
 
-  --color-secondary:         var(--secondary);
-  --color-secondary-foreground:var(--secondary-foreground);
+  /* ── Font tokens (Warm Luxe) ── */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body:    var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
 
-  --color-accent:            var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-muted:             var(--muted);
-  --color-muted-foreground:  var(--muted-foreground);
-
-  --color-border:            var(--border);
-  --color-input:             var(--input);
-  --color-ring:              var(--ring);
-
-  /* ── Interior design brand tokens ── */
-  --color-gold:              var(--gold);
-  --color-gold-light:        var(--gold-light);
-  --color-gold-dark:         var(--gold-dark);
-  --color-gold-muted:        var(--gold-muted);
-  --color-cream:             var(--cream);
-  --color-cream-dark:        var(--cream-dark);
-  --color-obsidian:          var(--obsidian);
-  --color-text-body:         var(--text-body);
-  --color-text-muted:        var(--text-muted);
-  --color-text-hint:         var(--text-hint);
-  --color-overlay:           var(--overlay);
-
-  --radius:                  var(--radius);
+  /* Radius scale */
+  --radius-sm: 0.25rem;
+  --radius:    0.5rem;
+  --radius-lg: 1rem;
 }
 
-/* ── Light Theme ──────────────────────── */
+/* ── Light Theme ── */
 :root {
-  /* Backgrounds */
-  --background:       oklch(0.97 0.008 80);    /* Linen Cream #F5F0E8 */
-  --foreground:       oklch(0.14 0.005 60);    /* Obsidian #1A1A1A */
+  --background:          oklch(0.97 0.008 80);
+  --foreground:          oklch(0.14 0.005 60);
+  --primary:             oklch(0.72 0.1 75);
+  --primary-foreground:  oklch(0.14 0.005 60);
+  --secondary:           oklch(0.95 0.008 80);
+  --secondary-foreground:oklch(0.2 0.005 60);
+  --accent:              oklch(0.65 0.09 75);
+  --accent-foreground:   oklch(0.98 0 0);
+  --muted:               oklch(0.93 0.01 80);
+  --muted-foreground:    oklch(0.46 0.01 60);
+  --border:              oklch(0.9 0.01 80);
+  --input:               oklch(0.93 0.008 80);
+  --ring:                oklch(0.72 0.1 75);
 
-  /* Primary = Gold (buttons, links, CTAs) */
-  --primary:          oklch(0.72 0.1 75);      /* Gold #C9A96E */
-  --primary-foreground:oklch(0.14 0.005 60);   /* Dark text on gold */
+  /* Brand */
+  --gold:       oklch(0.72 0.1 75);
+  --gold-light: oklch(0.88 0.06 80);
+  --gold-dark:  oklch(0.58 0.09 72);
+  --gold-muted: oklch(0.95 0.03 80);
+  --cream:      oklch(0.97 0.008 80);
+  --cream-dark: oklch(0.93 0.01 80);
+  --obsidian:   oklch(0.14 0.005 60);
+  --sage:       oklch(0.58 0.05 145);
+  --sage-light: oklch(0.88 0.03 145);
+  --text-body:  oklch(0.2 0.005 60);
+  --text-muted: oklch(0.46 0.01 60);
+  --text-hint:  oklch(0.68 0.008 60);
+  --overlay:    oklch(0.14 0.005 60 / 62%);
 
-  /* Secondary = Warm off-white surface */
-  --secondary:        oklch(0.95 0.008 80);    /* #EEEBE3 warm white */
-  --secondary-foreground:oklch(0.2 0.005 60);  /* #2E2B28 dark warm */
-
-  /* Accent = Deep gold for hover states */
-  --accent:           oklch(0.65 0.09 75);     /* Gold-dark #A07840 */
-  --accent-foreground:oklch(0.98 0 0);         /* White on dark gold */
-
-  /* Muted = light cream surface */
-  --muted:            oklch(0.93 0.01 80);     /* #E8E2D9 border/divider */
-  --muted-foreground: oklch(0.46 0.01 60);     /* #6B6560 muted text */
-
-  /* Borders & inputs */
-  --border:           oklch(0.9 0.01 80);      /* #E8E2D9 warm border */
-  --input:            oklch(0.93 0.008 80);    /* Slightly darker */
-  --ring:             oklch(0.72 0.1 75);      /* Gold focus ring */
-
-  /* ── Brand tokens (use directly) ── */
-  --gold:             oklch(0.72 0.1 75);      /* #C9A96E */
-  --gold-light:       oklch(0.88 0.06 80);     /* #E8D5B0 */
-  --gold-dark:        oklch(0.58 0.09 72);     /* #A07840 */
-  --gold-muted:       oklch(0.95 0.03 80);     /* #F7EDD8 tag bg */
-  --cream:            oklch(0.97 0.008 80);    /* #F5F0E8 */
-  --cream-dark:       oklch(0.93 0.01 80);     /* #E8E2D9 */
-  --obsidian:         oklch(0.14 0.005 60);    /* #1A1A1A */
-  --text-body:        oklch(0.2 0.005 60);     /* #2E2B28 */
-  --text-muted:       oklch(0.46 0.01 60);     /* #6B6560 */
-  --text-hint:        oklch(0.68 0.008 60);    /* #B0A898 */
-  --overlay:          oklch(0.14 0.005 60 / 62%); /* rgba(13,13,13,0.62) */
-
-  --radius: 0.5rem;  /* Sharp — suits luxury design */
+  --radius-sm: 0.25rem;
+  --radius:    0.5rem;
+  --radius-lg: 1rem;
 }
 
-/* ── Dark Theme ───────────────────────── */
+/* ── Dark Theme ── */
 .dark {
-  --background:       oklch(0.12 0.004 60);    /* #1A1A1A deep obsidian */
-  --foreground:       oklch(0.97 0.008 80);    /* Cream white #F5F0E8 */
+  --background:          oklch(0.12 0.004 60);
+  --foreground:          oklch(0.97 0.008 80);
+  --primary:             oklch(0.72 0.1 75);
+  --primary-foreground:  oklch(0.14 0.005 60);
+  --secondary:           oklch(0.2 0.005 60);
+  --secondary-foreground:oklch(0.9 0.008 80);
+  --accent:              oklch(0.25 0.008 60);
+  --accent-foreground:   oklch(0.88 0.06 80);
+  --muted:               oklch(0.22 0.005 60);
+  --muted-foreground:    oklch(0.68 0.008 60);
+  --border:              oklch(1 0 0 / 10%);
+  --input:               oklch(1 0 0 / 14%);
+  --ring:                oklch(0.72 0.1 75);
 
-  --primary:          oklch(0.72 0.1 75);      /* Gold — same in dark */
-  --primary-foreground:oklch(0.14 0.005 60);   /* Dark text on gold */
-
-  --secondary:        oklch(0.2 0.005 60);     /* #2E2B28 dark surface */
-  --secondary-foreground:oklch(0.9 0.008 80);  /* Cream text */
-
-  --accent:           oklch(0.25 0.008 60);    /* Darker surface */
-  --accent-foreground:oklch(0.88 0.06 80);     /* Gold-light text */
-
-  --muted:            oklch(0.22 0.005 60);    /* Dark muted surface */
-  --muted-foreground: oklch(0.68 0.008 60);    /* #B0A898 hint text */
-
-  --border:           oklch(1 0 0 / 10%);      /* Subtle white border */
-  --input:            oklch(1 0 0 / 14%);      /* Input slightly brighter */
-  --ring:             oklch(0.72 0.1 75);      /* Gold focus ring */
-
-  /* Brand tokens — adjusted for dark bg */
-  --gold:             oklch(0.72 0.1 75);      /* Same gold on dark */
-  --gold-light:       oklch(0.88 0.06 80);     /* Lighter for text */
-  --gold-dark:        oklch(0.58 0.09 72);     /* For borders */
-  --gold-muted:       oklch(0.22 0.04 75);     /* Tag bg on dark */
-  --cream:            oklch(0.97 0.008 80);    /* Cream text */
-  --cream-dark:       oklch(1 0 0 / 12%);      /* Dividers on dark */
-  --obsidian:         oklch(0.12 0.004 60);    /* Page bg */
-  --text-body:        oklch(0.88 0.008 80);    /* Body text on dark */
-  --text-muted:       oklch(0.68 0.008 60);    /* Muted on dark */
-  --text-hint:        oklch(0.46 0.01 60);     /* Hint on dark */
-  --overlay:          oklch(0 0 0 / 70%);       /* Stronger overlay on dark */
+  /* Brand */
+  --gold:       oklch(0.72 0.1 75);
+  --gold-light: oklch(0.88 0.06 80);
+  --gold-dark:  oklch(0.58 0.09 72);
+  --gold-muted: oklch(0.22 0.04 75);
+  --cream:      oklch(0.97 0.008 80);
+  --cream-dark: oklch(1 0 0 / 12%);
+  --obsidian:   oklch(0.12 0.004 60);
+  --sage:       oklch(0.65 0.05 145);
+  --sage-light: oklch(0.30 0.04 145);
+  --text-body:  oklch(0.88 0.008 80);
+  --text-muted: oklch(0.68 0.008 60);
+  --text-hint:  oklch(0.46 0.01 60);
+  --overlay:    oklch(0 0 0 / 70%);
 }
 
-/* ── Base styles ──────────────────────── */
+/* ── Base styles ── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+
   html {
     @apply scroll-smooth;
   }
-  /* Remove default radius for sharp luxury feel */
-  button, input, select, textarea {
-    @apply rounded-none; /* override with rounded-* per component */
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
   }
-  /* Selection color = gold */
+
+  /* ── Cormorant Garamond — display headings ── */
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-style: italic;        /* Cormorant is stunning in italic */
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.5vw, 1.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0em;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  /* ── DM Sans — body text ── */
+  p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--text-body);
+  }
+
+  /* Labels, captions, tags — DM Sans small */
+  label, caption, figcaption {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── Navigation — DM Sans uppercase ── */
+  nav a, nav button {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── Buttons — DM Sans ── */
+  button:not([class]) {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    @apply rounded-none;
+  }
+
+  input, select, textarea {
+    font-family: var(--font-body);
+    @apply rounded-none;
+  }
+
+  /* ── Blockquote — italic Cormorant ── */
+  blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--text-muted);
+    border-left: 1px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  /* ── Links ── */
+  a {
+    color: var(--gold-dark);
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+  a:hover {
+    color: var(--gold);
+    text-decoration-color: var(--gold);
+  }
+
+  /* ── Focus ── */
+  :focus-visible {
+    outline: 1.5px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ── Images ── */
+  img {
+    @apply object-cover;
+    image-rendering: auto;
+  }
+
+  /* ── Selection ── */
   ::selection {
     background-color: var(--gold);
     color: var(--obsidian);
   }
-  /* Scrollbar (webkit) */
-  ::-webkit-scrollbar { width: 6px }
-  ::-webkit-scrollbar-track { background: var(--cream-dark) }
-  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px }
-  ::-webkit-scrollbar-thumb:hover { background: var(--gold) }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 }
