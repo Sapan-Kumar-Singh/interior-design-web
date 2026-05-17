@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Navbar from "../navbar";
 import Image from "next/image";
 
 interface CoverBackgroundProps {

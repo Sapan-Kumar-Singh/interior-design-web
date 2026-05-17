@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "@/components/customIcon/customIocn";
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "@/components/icons/customIcons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";

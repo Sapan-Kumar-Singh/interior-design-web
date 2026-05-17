@@ -19,17 +19,12 @@ const ServiceSection = () => {
           <span>Services</span>
         </>} />
       </CoverBackground>
-      <div >
         <ServiceContent/>
-      </div>
-      <div >
        <ServiceProcess/>
-      </div>
-      <div>
         <WhyChooseUs/>
-      </div>
-       <div className='bg-white py-12'>
-        <RemodelingBanner/>
+
+       <div className='bg-white pb-8 px-12 m-auto'>
+        <RemodelingBanner />
        </div>
     </>
   )

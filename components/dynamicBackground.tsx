@@ -12,10 +12,10 @@ export default function DynamicBackground({children}:DynamicBackgroundProps) {
 
   // ── Slide data ──────────────────────────────────────────────────
 const slides = [
-  { src: "/images/bg-home-1.jpg", label: "Living Spaces" },
-  { src: "/images/bg-home-2.jpg", label: "Dining Rooms" },
-  { src: "/images/bg-home-3.jpg", label: "Bedroom Suites" },
-  { src: "/images/bg-home-4.jpg", label: "Open Kitchens" },
+  { src: "/images/home/bg-home-1.jpg", label: "Living Spaces" },
+  { src: "/images/home/bg-home-2.jpg", label: "Dining Rooms" },
+  { src: "/images/home/bg-home-3.jpg", label: "Bedroom Suites" },
+  { src: "/images/home/bg-home-4.jpg", label: "Open Kitchens" },
 ];
 
   useEffect(() => {

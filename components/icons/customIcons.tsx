@@ -84,3 +84,34 @@ export const YoutubeIcon=({size=14,className=""})=>(
       <path d="M10 12l5 3-5 3V12z" fill="currentColor" stroke="none" />
     </svg>
 )
+
+
+
+export const ForwardTriangleIcon = ({size=14,className=""}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  )
+}
+export const BackwardTriangleIcon = ({size=14,className=""}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+       width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M16 5 5 12l11 7z" />
+    </svg>
+  )
+}

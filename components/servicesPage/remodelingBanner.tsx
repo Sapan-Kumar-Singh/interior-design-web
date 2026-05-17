@@ -6,18 +6,22 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { imageReveal, slideUp, staggerContainerSlow } from '../../lib/animation'
 
+
 const RemodelingBanner = () => {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
     return (
         <>
-            <section ref={sectionRef} className="relative w-full max-w-[850px] mx-auto overflow-hidden rounded-xl">
+            <section ref={sectionRef} className="relative w-full   overflow-hidden rounded-xl">
 
                 {/* IMAGE — flows naturally to give section its height */}
                 <motion.div
                     variants={imageReveal}
                     initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: 1 }}
                     animate={isInView ? "show" : "hidden"}
                 >
                     <Image

@@ -97,56 +97,42 @@ export const fadeRightReveal = {
 // ── SLIDE (no blur, stronger movement) ───────────────────────
 
 export const slideUp = {
-  hidden: { opacity: 0, y: "80%" , filter: "blur(4px)"},
+  hidden: { opacity: 0, y: 60, filter: "blur(4px)" },
   show: {
     opacity: 1,
     y: 0,
-     filter: "blur(0px)",
-    transition: { duration: 2.1, ease: [0.22, 1, 0.36, 1] },
+    filter: "blur(0px)",
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 } as const;
 
 export const slideDown = {
-  hidden: { opacity: 0,
-     y: "-80%" ,
-      filter: "blur(4px)"
-    },
+  hidden: { opacity: 0, y: -60, filter: "blur(4px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 2.1, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 } as const;
 
 export const slideLeft = {
-  hidden: {
-    opacity: 0,
-    x: "-100%",
-    filter: "blur(4px)",
-  },
+  hidden: { opacity: 0, x: -80, filter: "blur(4px)" },
   show: {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    transition: {
-      duration: 2.1,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 } as const;
 
 export const slideRight = {
-  hidden: {
-    opacity: 0,
-    x: "100%",
-    filter: "blur(4px)",
-  },
+  hidden: { opacity: 0, x: 80, filter: "blur(4px)" },
   show: {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    transition: { duration: 2.1, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 } as const;
 

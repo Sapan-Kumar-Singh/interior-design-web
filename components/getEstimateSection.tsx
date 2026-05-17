@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { textContainer, textReveal } from "./animationConfig/getEstimate";
 import { slideUp, staggerContainerSlow } from "../lib/animation";
 
 

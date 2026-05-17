@@ -5,7 +5,7 @@ import {
   InstagramIcon,
   FacebookIcon,
   LinkedinIcon,
-} from "./customIcon/customIocn";
+} from "./icons/customIcons";
 
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";

@@ -6,6 +6,10 @@ import Stats from '@/components/stats';
 import AboutPreview from '../aboutPreview';
 import ServicePreview from '../servicePreview';
 import GetEstimatePreview from '../getEstimatePreview';
+import ProjectsPreview from '../projectsPreview';
+import WhyChooseUsPreview from '../whyChooseUsPreview';
+import TestimonialsPreview from '../testimonialPreview';
+import TransformationShowcasePreview from '../transformationShowcasePreview';
 
 
 const HeroSection = () => {
@@ -41,8 +45,13 @@ const HeroSection = () => {
             <AboutPreview/>
             <ServicePreview/>
             <GetEstimatePreview/>
+            <ProjectsPreview/>
+            <WhyChooseUsPreview/>
+            <TestimonialsPreview/>
+            <TransformationShowcasePreview/>
         </main>
     )
+
 }
 
 export default HeroSection
