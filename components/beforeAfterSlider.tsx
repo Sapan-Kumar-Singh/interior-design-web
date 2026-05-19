@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { BackwardTriangleIcon, ForwardTriangleIcon } from "../icons/customIcons";
+import { BackwardTriangleIcon, ForwardTriangleIcon } from "./icons/customIcons";
 
 const BeforeAfterSlider = () => {
     const [position, setPosition] = useState(50)

@@ -2,7 +2,7 @@
 
 import { slideUp, staggerContainer } from '@/lib/animation'
 import { motion } from 'framer-motion';
-import BeforeAfterSlider from './beforeAfterSlider';
+import BeforeAfterSlider from '../beforeAfterSlider';
 
 
 const TransformationShowcase = () => {

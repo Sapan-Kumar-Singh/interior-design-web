@@ -5,6 +5,7 @@ import ServiceContent from './serviceContent';
 import ServiceProcess from './serviceProcess';
 import CoverText from '../coverBackground/coverText';
 import WhyChooseUs from '../whyChooseUs';
+import ServiceDetails from './serviceDetails';
 
 const ServiceSection = () => {
     
@@ -26,7 +27,10 @@ const ServiceSection = () => {
        <div className='bg-white pb-8 px-12 m-auto'>
         <RemodelingBanner />
        </div>
+
+       <ServiceDetails/>
     </>
+    
   )
 }
 
