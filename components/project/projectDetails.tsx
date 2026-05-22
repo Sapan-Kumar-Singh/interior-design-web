@@ -1,7 +1,7 @@
 "use client";
 
-import CoverBackground from "../coverBackground/coverBackground";
-import CoverText from "../coverBackground/coverText";
+import PageHero from "../pageHero";
+import PageHeroContent from "../pageHeroContent";
 import {
   AlarmClock,
   CircleCheck,
@@ -21,7 +21,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import BeforeAfterSlider from "../beforeAfterSlider";
-import RemodelingBanner from "../servicesPage/remodelingBanner";
+import RemodelingBanner from "../services/remodelingBanner";
 
 const ProjectDetails = () => {
   const projectMeta = [
@@ -117,10 +117,10 @@ const ProjectDetails = () => {
 
   return (
     <>
-      <CoverBackground imgSrc="/images/services/service_cover_bg.jpg">
-        <CoverText
+      <PageHero imgSrc="/images/services/service_cover_bg.jpg">
+        <PageHeroContent
           title="Project Details"
-          breadcrumbelement={
+          breadcrumb={
             <>
               <House size={14} className="text-primary" />
               <span>Home</span>
@@ -129,7 +129,7 @@ const ProjectDetails = () => {
             </>
           }
         />
-      </CoverBackground>
+      </PageHero>
 
       <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 lg:py-20 space-y-12 lg:space-y-16">
 

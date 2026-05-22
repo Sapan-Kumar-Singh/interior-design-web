@@ -1,5 +1,5 @@
 import React from 'react'
-import GetEstimateSection from '../getEstimateSection'
+import GetEstimateSection from '../../getEstimateSection'
 
 const GetEstimatePreview = () => {
   return (

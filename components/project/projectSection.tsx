@@ -1,25 +1,25 @@
 import React from 'react'
-import CoverBackground from '../coverBackground/coverBackground'
-import CoverText from '../coverBackground/coverText'
+import PageHero from '../pageHero'
+import PageHeroContent from '../pageHeroContent'
 import { House } from 'lucide-react'
 import OurProjects from './ourProjects'
 import Testimonials from '../testimonials/testimonials'
 import TransformationShowcase from './transformationShowcase'
-import RemodelingBanner from '../servicesPage/remodelingBanner'
+import RemodelingBanner from '../services/remodelingBanner'
 import ProjectDetails from './projectDetails'
 
 
 const ProjectSection = () => {
   return (
     // <>
-    //  <CoverBackground imgSrc='/images/projects/project_cover_bg.jpg'>
-    //     <CoverText title='Our Remodeling Projects' breadcrumbelement={<>
+    //  <PageHero imgSrc='/images/projects/project_cover_bg.jpg'>
+    //     <PageHeroContent title='Our Remodeling Projects' breadcrumb={<>
     //       <House size={14} className="text-primary" />
     //       <span>Home</span>
     //       <span>|</span>
     //       <span>Projects</span>
     //     </>} />
-    //   </CoverBackground>
+    //   </PageHero>
     //   <OurProjects/>
     //   <Testimonials/>
     //   <TransformationShowcase/>

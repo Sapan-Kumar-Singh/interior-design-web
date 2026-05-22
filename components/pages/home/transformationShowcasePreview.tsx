@@ -1,5 +1,5 @@
 import React from 'react'
-import TransformationShowcase from '../projectPage/transformationShowcase'
+import TransformationShowcase from '../../project/transformationShowcase'
 
 const TransformationShowcasePreview = () => {
   return (

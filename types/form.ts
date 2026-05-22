@@ -1,6 +1,6 @@
 type InputType = "text" | "email" | "password" | "number" | "tel" | "url" | "search" | "date" | "textarea";
 export interface InputField {
-  label: string;
+  label?: string;
   field: string;
   type?: InputType;
 

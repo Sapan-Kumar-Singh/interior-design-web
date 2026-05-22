@@ -19,12 +19,12 @@ export default function NotFound() {
         </h1>
 
         {/* Title */}
-        <h2 className="text-white font-serif text-2xl sm:text-3xl font-light mt-4">
+        <h2 className="text-cream font-serif text-2xl sm:text-3xl font-light mt-4">
           Page Not Found
         </h2>
 
         {/* Description */}
-        <p className="text-white/60 font-sans text-sm mt-4 leading-relaxed">
+        <p className="text-cream/60 font-sans text-sm mt-4 leading-relaxed">
           The page you are looking for doesn’t exist or has been moved.
           Let’s take you back to a beautiful place.
         </p>

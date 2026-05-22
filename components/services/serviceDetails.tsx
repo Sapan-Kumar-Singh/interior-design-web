@@ -1,7 +1,7 @@
 "use client";
 
-import CoverBackground from "../coverBackground/coverBackground";
-import CoverText from "../coverBackground/coverText";
+import PageHero from "../pageHero";
+import PageHeroContent from "../pageHeroContent";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -92,10 +92,10 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <CoverBackground imgSrc="/images/services/service_cover_bg.jpg">
-        <CoverText
+      <PageHero imgSrc="/images/services/service_cover_bg.jpg">
+        <PageHeroContent
           title="Services"
-          breadcrumbelement={
+          breadcrumb={
             <>
               <House size={14} className="text-primary" />
               <span>Home</span>
@@ -104,7 +104,7 @@ const ServiceDetails = () => {
             </>
           }
         />
-      </CoverBackground>
+      </PageHero>
 
       {/* MAIN SECTION */}
       <section className="container mx-auto px-4 py-12 lg:py-20">

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { ArrowUpRight, Layers, NotebookText, Wrench } from "lucide-react";
 import {
     Card,
@@ -10,10 +10,10 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from "../ui/card";
+} from "../../ui/card";
 import { motion } from "framer-motion";
-import Stats from "../stats";
-import VideoPlayer from "../videoPlayer";
+import Stats from "../../stats";
+import VideoPlayer from "../../videoPlayer";
 
 import {
     fadeRightReveal,
@@ -21,7 +21,8 @@ import {
     imageReveal,
     staggerContainer,
     staggerContainerSlow,
-} from "../../lib/animation";
+} from "../../../lib/animation";
+import { aboutUsConfig } from "@/config/aboutConfig";
 
 // FEATURE CARDS
 const featureItem = (i: number) => ({
@@ -47,30 +48,10 @@ const featureItem = (i: number) => ({
     } as const,
 });
 
-const features = [
-    {
-        icon: <Layers size={18} />,
-        title: "Customized Design Solutions",
-        content:
-            "We tailor every project to your lifestyle, preferences, and budget with precision.",
-    },
-    {
-        icon: <Wrench size={18} />,
-        title: "Premium Materials & Finishes",
-        content:
-            "Only the finest materials make it into your home — beauty that lasts decades.",
-    },
-    {
-        icon: <NotebookText size={18} />,
-        title: "Transparent Pricing & Planning",
-        content:
-            "No surprises. Clear quotes, honest timelines, and full accountability.",
-    },
-];
 
-const AboutContent = () => {
+const AboutUs = () => {
     return (
-        <section className="bg-white w-full py-12 px-6 sm:px-10 lg:px-20 overflow-hidden">
+        <section className="bg-white w-full py-12 px-6 sm:px-10 lg:px-16 overflow-hidden">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
@@ -87,23 +68,23 @@ const AboutContent = () => {
                         variants={slideUp}
                         className="flex items-center gap-3 text-gold text-lg font-semibold capitalize"
                     >
-                        About Us
+                        {aboutUsConfig.badge}
                     </motion.h1>
 
                     <motion.h2
                         variants={slideUp}
                         className="font-semibold text-2xl sm:text-3xl lg:text-3xl font-serif"
                     >
-                        Modern Kitchen And Bathroom{" "}
-                        <em className="italic text-gold-dark">Renovations</em>{" "}
-                        built for Living
+                        {aboutUsConfig.title.first}{" "}
+                        <em className="italic text-gold-dark">{aboutUsConfig.title.highlight}</em>{" "}
+                        {aboutUsConfig.title.second}
                     </motion.h2>
 
                     <motion.p
                         variants={slideUp}
                         className="text-[14px] text-obsidian max-w-xl"
                     >
-                        Bathora is dedicated to transforming kitchens and bathrooms into elegant, functional spaces that elevate everyday living. With years of experience and a passion for design, we bring creativity, precision, and quality into every project we undertake. From concept to completion, our team works closely with homeowners to understand their vision
+                        {aboutUsConfig.description}
                     </motion.p>
 
                     {/* VIDEO + STATS + BUTTON */}
@@ -112,32 +93,19 @@ const AboutContent = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 items-stretch">
 
                             {/* VIDEO */}
-                            <div>
-                                <VideoPlayer
-                                    src="/videos/about-content.mp4"
-                                    posterSrc="/images/thumbnail.jpg"
-                                />
-                            </div>
+                            <VideoPlayer src={aboutUsConfig.video.src} />
 
                             {/* STATS + BUTTON */}
                             <div className="flex flex-col justify-start gap-4">
 
-                                <Stats
-                                    stats={[
-                                        {
-                                            end: 15,
-                                            suffix: "+",
-                                            label: "Years of Experience",
-                                        },
-                                    ]}
-                                />
+                                <Stats stats={aboutUsConfig.stats} />
 
                                 <motion.div
                                     variants={slideUp}
                                     className="flex justify-center w-full lg:justify-start"
                                 >
                                     <Button>
-                                        Discover our story <ArrowUpRight size={14} />
+                                        {aboutUsConfig.button.label}<ArrowUpRight size={14} />
                                     </Button>
                                 </motion.div>
 
@@ -168,8 +136,8 @@ const AboutContent = () => {
                         "
                     >
                         <Image
-                            src="/images/about/about-content.jpg"
-                            alt="Kitchen"
+                            src={aboutUsConfig.image.src}
+                            alt={aboutUsConfig.image.alt}
                             fill
                             className="object-cover"
                         />
@@ -184,19 +152,17 @@ const AboutContent = () => {
                         className="
                             grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4
                             relative
-                            lg:-ml-[260px]
-                            xl:-ml-[260px]
+                            lg:-ml-[225px]
                             mt-6
-                        "
-                    >
-                        {features.map((f, i) => (
+                        ">
+                        {aboutUsConfig.features.map((f, i) => (
                             <motion.div
                                 key={i}
                                 variants={featureItem(i)}
-                                whileHover={{
-                                    y: -6,
-                                    transition: { duration: 0.25 },
-                                }}
+                                // whileHover={{
+                                //     y: -6,
+                                //     transition: { duration: 0.25 },
+                                // }}
                             >
                                 <Card className="rounded-sm bg-cream shadow-sm h-full">
 
@@ -233,4 +199,4 @@ const AboutContent = () => {
     );
 };
 
-export default AboutContent;
+export default AboutUs;

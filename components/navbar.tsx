@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* LOGO */}
         <Link  href="/" className=" flex items-center gap-3 group select-none no-underline">
           
-          <span className=" font-serif  text-xl font-light  tracking-[0.14em] text-white uppercase">
+          <span className=" font-serif  text-xl font-light  tracking-[0.14em] text-cream uppercase">
             Lumière
           </span>
         </Link>
@@ -88,8 +88,8 @@ export default function Navbar() {
                 
                 ${
                   isActive
-                    ? "text-white after:w-full"
-                    : "text-white/70 hover:text-white after:w-0 hover:after:w-full"
+                    ? "text-cream after:w-full"
+                    : "text-cream/70 hover:text-cream after:w-0 hover:after:w-full"
                 }
               `}
             >
@@ -104,7 +104,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <button className="text-white">
+              <button className="text-cream">
                 <Menu size={22} strokeWidth={1.5} />
               </button>
             </SheetTrigger>
@@ -118,8 +118,8 @@ export default function Navbar() {
                   absolute
                   right-4
                   top-4
-                  text-white/80
-                  hover:text-white
+                  text-cream/80
+                  hover:text-cream
                 "
               >
                 <X size={20} />
@@ -133,7 +133,7 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className="flex items-center  gap-3 no-underline">
                     <span
-                      className="font-serif  text-lg font-light tracking-[0.14em] text-white  uppercase">
+                      className="font-serif  text-lg font-light tracking-[0.14em] text-cream  uppercase">
                       Lumière
                     </span>
                   </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className="flex items-center gap-4 py-4 border-b border-white/[0.06]">
                     <span
-                      className="font-serif text-[16px] font-light tracking-[0.04em] text-white/60  hover:text-white transition-colors duration-300 ">
+                      className="font-serif text-[16px] font-light tracking-[0.04em] text-cream/60  hover:text-cream transition-colors duration-300 ">
                       {label}
                     </span>
                   </Link>

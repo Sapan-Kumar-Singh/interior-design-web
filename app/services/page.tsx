@@ -1,4 +1,4 @@
-import ServiceSection from "@/components/servicesPage/serviceSection";
+import ServiceSection from "@/components/services/serviceSection";
 
 const Services = () => {
   return (

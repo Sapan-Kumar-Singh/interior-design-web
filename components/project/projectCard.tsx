@@ -152,7 +152,7 @@ const ProjectCard = ({
                             <Plus size={20} />
                         </Button>
 
-                        <h3 className="text-white text-xl font-semibold mb-4">
+                        <h3 className="text-cream text-xl font-semibold mb-4">
                             {title}
                         </h3>
 
@@ -185,7 +185,7 @@ const ProjectCard = ({
                                     className="p-3 bg-transparent cursor-pointer"
                                 >
                                     <ZoomIn
-                                        className="text-white"
+                                        className="text-cream"
                                         size={20}
                                     />
                                 </button>
@@ -195,7 +195,7 @@ const ProjectCard = ({
                                     className="p-3 bg-transparent cursor-pointer"
                                 >
                                     <ZoomOut
-                                        className="text-white"
+                                        className="text-cream"
                                         size={20}
                                     />
                                 </button>
@@ -205,7 +205,7 @@ const ProjectCard = ({
                                     className="p-3 bg-transparent cursor-pointer"
                                 >
                                     <Share2
-                                        className="text-white"
+                                        className="text-cream"
                                         size={20}
                                     />
                                 </button>
@@ -215,7 +215,7 @@ const ProjectCard = ({
                                     className="p-3 bg-transparent cursor-pointer"
                                 >
                                     <X
-                                        className="text-white"
+                                        className="text-cream"
                                         size={20}
                                     />
                                 </button>

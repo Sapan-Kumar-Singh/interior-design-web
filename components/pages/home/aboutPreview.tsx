@@ -1,10 +1,10 @@
 import React from 'react'
-import AboutContent from '../aboutPage/aboutContent'
+import AboutUs from '../about/aboutUs'
 
 const AboutPreview = () => {
   return (
     <>
-      <AboutContent/>
+      <AboutUs/>
     </>
   )
 }

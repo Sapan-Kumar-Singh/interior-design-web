@@ -1,4 +1,4 @@
-import ProjectSection from "@/components/projectPage/projectSection";
+import ProjectSection from "@/components/project/projectSection";
 
 const Projects = () => {
   return (

@@ -187,7 +187,7 @@
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-transform:capitalize;
     color: var(--text-muted);
   }
 
@@ -197,7 +197,7 @@
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.15em;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
 
   /* ── Buttons — DM Sans ── */
@@ -206,7 +206,7 @@
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.12em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     @apply rounded-none;
   }
 

@@ -44,7 +44,7 @@ const GetEstimateSection = () => {
             <motion.h2
               variants={slideUp }
               className="
-                text-white
+                text-cream
                 font-semibold
                 leading-tight
                 text-2xl

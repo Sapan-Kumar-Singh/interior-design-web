@@ -22,8 +22,6 @@ export default function VideoPlayer({
     if (!videoRef.current) return;
 
     videoRef.current.play();
-
-    // ✅ prevents flicker/blink
     setTimeout(() => {
       setIsPlaying(true);
     }, 150);
@@ -62,13 +60,13 @@ export default function VideoPlayer({
               transition: { duration: 0.25, ease: "easeOut" },
             }}
             className="
-              absolute inset-0
-              flex items-center justify-center
-              bg-obsidian/20
-              rounded-xl
-              cursor-pointer
-            "
-          >
+             absolute inset-0
+             flex items-end justify-center
+             pb-6
+             bg-obsidian/20
+             rounded-xl
+             cursor-pointer
+           ">
             {/* PLAY BUTTON WRAPPER */}
             <div className="relative flex items-center justify-center">
 
@@ -78,15 +76,17 @@ export default function VideoPlayer({
                 whileTap={{ scale: 0.95 }}
                 className="
                   relative
-                  w-16 h-16 sm:w-20 sm:h-20
-                  bg-gold
+                  w-12 h-12
+                  bg-cream/20
                   rounded-full
                   flex items-center justify-center
                   shadow-lg
                   transition
-                "
-              >
-                <Play className="text-cream ml-1" size={20} />
+                ">
+                <Play
+                  className="text-cream/40 fill-cream/40 ml-1"
+                  size={20}
+                />
               </motion.div>
 
             </div>

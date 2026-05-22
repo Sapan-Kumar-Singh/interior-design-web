@@ -50,7 +50,7 @@ const Footer = () => {
     }]
 
     return (
-        <footer className="bg-obsidian text-white">
+        <footer className="bg-obsidian text-cream">
 
             {/* NEWSLETTER STRIP */}
             <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-10 sm:py-14">
@@ -117,7 +117,7 @@ const Footer = () => {
                             <span className="text-gold">B</span>athora
                         </div>
 
-                        <p className="text-white/50 text-sm leading-relaxed">
+                        <p className="text-cream/50 text-sm leading-relaxed">
                             Bathora is your partner in transforming kitchens & bathrooms into
                             luxurious, functional spaces. We combine modern design with expert
                             craftsmanship to deliver results that inspire.
@@ -138,7 +138,7 @@ const Footer = () => {
                                     variants={slideUp}
                                     whileHover={{ y: -3, scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className=" w-9 h-9 rounded-full border border-white/20 flex items-center justify-center  text-white/60 hover:text-white  hover:border-white/50 transition-colors duration-200 ">
+                                    className=" w-9 h-9 rounded-full border border-white/20 flex items-center justify-center  text-cream/60 hover:text-cream  hover:border-white/50 transition-colors duration-200 ">
                                     {icon}
                                 </motion.a>
                             ))}
@@ -152,7 +152,7 @@ const Footer = () => {
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
                     >
-                        <h3 className="text-white font-semibold text-base mb-5">
+                        <h3 className="text-cream font-semibold text-base mb-5">
                             Quick Links
                         </h3>
                         <motion.ul
@@ -166,7 +166,7 @@ const Footer = () => {
                                 <motion.li key={label} variants={slideUp}>
                                     <Link
                                         href={href}
-                                        className="flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors duration-200  group">
+                                        className="flex items-center gap-2 text-cream/50 hover:text-cream text-sm transition-colors duration-200  group">
                                         <span className="group-hover:translate-x-1 transition-transform duration-200">
                                             {label}
                                         </span>
@@ -188,7 +188,7 @@ const Footer = () => {
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
                     >
-                        <h3 className="text-white font-semibold text-base mb-5">
+                        <h3 className="text-cream font-semibold text-base mb-5">
                             Our Services
                         </h3>
                         <motion.ul
@@ -202,7 +202,7 @@ const Footer = () => {
                                 <motion.li key={label} variants={slideUp}>
                                     <Link
                                         href={href}
-                                        className="flex items-center gap-2  text-white/50 hover:text-white  text-sm transition-colors duration-200  group">
+                                        className="flex items-center gap-2  text-cream/50 hover:text-cream  text-sm transition-colors duration-200  group">
                                         <span className="group-hover:translate-x-1 transition-transform duration-200">
                                             {label}
                                         </span>
@@ -224,7 +224,7 @@ const Footer = () => {
                         whileInView="show"
                         viewport={{ once: true, amount: 0.2 }}
                     >
-                        <h3 className="text-white font-semibold text-base mb-5">
+                        <h3 className="text-cream font-semibold text-base mb-5">
                             Contact Info
                         </h3>
                         <motion.ul
@@ -238,7 +238,7 @@ const Footer = () => {
                                 <motion.li
                                     key={label}
                                     variants={slideUp}
-                                    className="flex items-start gap-3 text-sm text-white/50"
+                                    className="flex items-start gap-3 text-sm text-cream/50"
                                 >
                                     <span className="mt-0.5 shrink-0">{icon}</span>
                                     <span>{label}</span>
@@ -257,14 +257,14 @@ const Footer = () => {
                 whileInView="show"
                 viewport={{ once: true }}
             >
-                <div className=" max-w-7xl mx-auto px-4 sm:px-8 lg:px-16  py-5 flex flex-col sm:flex-row items-center justify-between  gap-3 text-white/40 text-xs ">
+                <div className=" max-w-7xl mx-auto px-4 sm:px-8 lg:px-16  py-5 flex flex-col sm:flex-row items-center justify-between  gap-3 text-cream/40 text-xs ">
                     <span>© TemplateOrbit.Com</span>
                     <div className="flex gap-4">
-                        <Link href="/privacy" className="hover:text-white transition-colors duration-200">
+                        <Link href="/privacy" className="hover:text-cream transition-colors duration-200">
                             Privacy Policy
                         </Link>
                         <span>|</span>
-                        <Link href="/terms" className="hover:text-white transition-colors duration-200">
+                        <Link href="/terms" className="hover:text-cream transition-colors duration-200">
                             Terms & Conditions
                         </Link>
                     </div>

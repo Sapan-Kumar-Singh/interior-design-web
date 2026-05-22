@@ -1,9 +1,9 @@
 import { House } from 'lucide-react';
-import CoverBackground from '../coverBackground/coverBackground';
+import PageHero from '../pageHero';
 import RemodelingBanner from './remodelingBanner';
 import ServiceContent from './serviceContent';
 import ServiceProcess from './serviceProcess';
-import CoverText from '../coverBackground/coverText';
+import PageHeroContent from '../pageHeroContent';
 import WhyChooseUs from '../whyChooseUs';
 import ServiceDetails from './serviceDetails';
 
@@ -12,14 +12,14 @@ const ServiceSection = () => {
 
   return (
     <>
-    <CoverBackground imgSrc='/images/services/service_cover_bg.jpg'>
-        <CoverText title='Services' breadcrumbelement={<>
+    <PageHero imgSrc='/images/services/service_cover_bg.jpg'>
+        <PageHeroContent title='Services' breadcrumb={<>
           <House size={14} className="text-primary" />
           <span>Home</span>
           <span>|</span>
           <span>Services</span>
         </>} />
-      </CoverBackground>
+      </PageHero>
         <ServiceContent/>
        <ServiceProcess/>
         <WhyChooseUs/>

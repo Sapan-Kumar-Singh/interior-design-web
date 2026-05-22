@@ -14,9 +14,9 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-} from "../ui/card"
+} from "../../ui/card"
 import { fadeUpReveal,staggerContainer } from "@/lib/animation"
-import InputForm from "../inputForm"
+import InputForm from "../../inputForm"
 
 import { InputFormConfig } from "@/types/form"
 

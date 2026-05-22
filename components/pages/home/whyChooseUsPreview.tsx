@@ -1,5 +1,5 @@
 import React from 'react'
-import WhyChooseUs from '../whyChooseUs'
+import WhyChooseUs from '../../whyChooseUs'
 
 const WhyChooseUsPreview = () => {
   return (

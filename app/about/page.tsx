@@ -1,4 +1,4 @@
-import AboutSection from '@/components/aboutPage/aboutSection'
+import AboutSection from '@/components/pages/about/aboutSection'
 import React from 'react'
 
 const About = () => {

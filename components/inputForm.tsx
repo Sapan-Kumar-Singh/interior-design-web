@@ -27,7 +27,7 @@ const InputForm = (formConfig: InputFormConfig) => {
         onSubmit,
         className,
     } = formConfig;
-
+    
     return (
         <Card
             className={`
@@ -50,7 +50,7 @@ const InputForm = (formConfig: InputFormConfig) => {
 
                     {description && (
                         <CardDescription
-                            className="text-sm text-obsidian/80 leading-relaxed mt-2">
+                            className="text-xs text-obsidian/80 leading-relaxed ">
                             {description}
                         </CardDescription>
                     )}
@@ -73,13 +73,14 @@ const InputForm = (formConfig: InputFormConfig) => {
                 </CardContent>
 
                 <CardFooter
-                    className=" px-0 pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-inherit">
+                    className="flex flex-col bg-inherit px-0 py-4 border-none">
                     <Button
                         type="submit"
                         className="w-full sm:w-full">
                         {submitButtonText ?? "Save"}
                         <ArrowUpRight size={14} />
                     </Button>
+                    
                     {footer}
                 </CardFooter>
             </form>

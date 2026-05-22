@@ -251,7 +251,7 @@ const TeamMemberCard = ({
     delay: 0.25 + index * 0.12,
     ease: [0.16, 1, 0.3, 1],
   }}
-  className="text-white font-semibold text-sm sm:text-base lg:text-lg leading-snug"
+  className="text-cream font-semibold text-sm sm:text-base lg:text-lg leading-snug"
 >
   {name}
 </motion.h3>
@@ -265,7 +265,7 @@ const TeamMemberCard = ({
     delay: 0.35 + index * 0.12,
     ease: [0.16, 1, 0.3, 1],
   }}
-  className="text-white/70 text-xs sm:text-sm mt-0.5"
+  className="text-cream/70 text-xs sm:text-sm mt-0.5"
 >
   {role}
 </motion.p>
@@ -290,7 +290,7 @@ const TeamMemberCard = ({
             rel="noopener noreferrer"
             className="w-8 h-8 rounded-full bg-obsidian/20 backdrop-blur-sm flex items-center justify-center hover:bg-obsidian/40 transition-colors duration-200"
           >
-            <InstagramIcon size={14} className="text-white" />
+            <InstagramIcon size={14} className="text-cream" />
           </a>
         )}
 
@@ -301,7 +301,7 @@ const TeamMemberCard = ({
             rel="noopener noreferrer"
             className="w-8 h-8 rounded-full bg-obsidian/20 backdrop-blur-sm flex items-center justify-center hover:bg-obsidian/40 transition-colors duration-200"
           >
-            <FacebookIcon size={14} className="text-white" />
+            <FacebookIcon size={14} className="text-cream" />
           </a>
         )}
 
@@ -312,7 +312,7 @@ const TeamMemberCard = ({
             rel="noopener noreferrer"
             className="w-8 h-8 rounded-full bg-obsidian/20 backdrop-blur-sm flex items-center justify-center hover:bg-obsidian/40 transition-colors duration-200"
           >
-            <LinkedinIcon size={14} className="text-white" />
+            <LinkedinIcon size={14} className="text-cream" />
           </a>
         )}
       </motion.div>
