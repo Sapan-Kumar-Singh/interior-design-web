@@ -1,9 +1,10 @@
 "use client"
 import Image from "next/image";
-import { Card, CardContent, CardDescription } from "../ui/card";
+import { Card, CardContent, CardDescription } from "../../ui/card";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { cardReveal, slideUp, imageReveal, staggerContainerSlow } from "../../lib/animation";
+import { cardReveal, slideUp, imageReveal, staggerContainerSlow } from "../../../lib/animation";
+import { processSectionConfig, ProcessStep } from "@/config/serviceProcessConfig";
 
 
 
@@ -30,8 +31,8 @@ const ServiceProcess = () => {
         className="absolute inset-0"
       >
         <Image
-          src="/images/services/service_process_cover.jpg"
-          alt="Service process Cover Image"
+          src={processSectionConfig.background.src}
+          alt={processSectionConfig.background.alt}
           fill
           priority
           className="object-cover"
@@ -52,22 +53,21 @@ const ServiceProcess = () => {
           variants={slideUp}
           className="text-base font-semibold text-cream mb-3"
         >
-          Our Process
+          {processSectionConfig.content.badge}
         </motion.h1>
 
         <motion.h2
           variants={slideUp}
           className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight"
         >
-          A Simple Process Designed for Perfect Results
+          {processSectionConfig.content.title}
         </motion.h2>
 
         <motion.p
           variants={slideUp}
           className="mt-4 text-sm sm:text-base text-cream/90"
         >
-          From the first consultation to the final reveal, we make your remodeling
-          journey smooth, transparent, and stress-free
+          {processSectionConfig.content.description}
         </motion.p>
 
         {/* Nested stagger container for cards */}
@@ -86,7 +86,7 @@ const ServiceProcess = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 w-full gap-4 mt-10"
         >
-          {processConfig.map((process) => (
+          {processSectionConfig.steps.map((process:ProcessStep) => (
             <motion.div
               key={process.srNo}
               variants={slideUp}

@@ -4,23 +4,14 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
-import { slideLeft } from "../../lib/animation";
+import { slideLeft } from "../lib/animation";
+import Link from "next/link";
+import { ServiceItem } from "@/config/serviceConfig";
 
-
-
-type Service = {
-  image: string;
-  title: string;
-  description: string;
-};
 
 // ─── Overlay Card ───────────────────────────────────────────
-const OverlayCard = ({
-  service,
-}: {
-  service: Service;
-}) => { 
-  // ✅ useInView watches the wrapper div — not blocked by overflow-hidden or parent clipping
+const OverlayCard = ({slug,title,description,image}:ServiceItem) => { 
+  
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
  
@@ -35,8 +26,8 @@ const OverlayCard = ({
   >
     <div className="absolute inset-0">
       <Image
-        src={service.image}
-        alt={service.title}
+        src={image}
+        alt={title}
         fill
         className="object-cover"
         priority
@@ -50,17 +41,17 @@ const OverlayCard = ({
 
     <div className="relative z-10 flex flex-col justify-end h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] p-4 sm:p-5">
       <h2 className="text-cream text-2xl sm:text-3xl font-semibold leading-tight">
-        {service.title}
+        {title}
       </h2>
       <p className="text-cream font-medium text-xs sm:text-sm leading-relaxed mt-2 mb-4 max-w-sm">
-        {service.description}
+        {description}
       </p>
-      <a
-        href="#"
-        className="inline-flex items-center gap-1.5 text-cream hover:text-gold text-sm font-medium underline underline-offset-4"
-      >
-        View Details <ArrowUpRight size={14} />
-      </a>
+
+          <Link href={`/services/${slug}`}
+            className="inline-flex items-center gap-1.5 text-cream hover:text-gold text-sm font-medium underline underline-offset-4"
+          >
+            View Details <ArrowUpRight size={14} />
+          </Link>
     </div>
   </motion.div>
 </div>

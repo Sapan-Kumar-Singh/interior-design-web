@@ -1,12 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import {
-  BookOpenText,
-  Target,
-  Telescope,
-} from "lucide-react";
+
 
 import {
   Card,
@@ -16,54 +11,23 @@ import {
   CardTitle,
 } from "./ui/card";
 
-import GetEstimateSection from "./getEstimateSection";
 
 import {
   staggerContainer,
   slideUp,
-  staggerSlideUpItem
+  staggerSlideUpItem,
+  staggerContainerSlow
 } from "../lib/animation";
+import { missionConfig } from "@/config/missionConfig";
 
-const missionCards = [
-  {
-    icon: <BookOpenText size={40} />,
-    title: "Our Journey",
-    content:
-      "We tailor every project to your lifestyle, preferences, and budget with precision.",
-  },
-
-  {
-    icon: <Target size={40} />,
-    title: "Our Mission",
-    content:
-      "Only the finest materials make it into your home — beauty that lasts decades.",
-  },
-
-  {
-    icon: <Telescope size={40} />,
-    title: "Our Vision",
-    content:
-      "No surprises. Clear quotes, honest timelines, and full accountability.",
-  },
-];
-
-const staggerContainerSmooth = {
-  hidden: {},
-
-  show: {
-    transition: {
-      staggerChildren: 0.16,
-      delayChildren: 0.08,
-    },
-  },
-} as const;
 
 const MissionPage = () => {
+
   return (
     <main className="bg-cream-dark">
 
       {/* TOP CONTENT */}
-      <section className="max-w-5xl py-8 mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-0">
+      <section className="max-w-5xl py-12 px-6 sm:px-10 lg:px-16 overflow-hidden">
 
         {/* TEXT CONTENT */}
         <motion.div
@@ -85,7 +49,7 @@ const MissionPage = () => {
               font-semibold uppercase tracking-wide
             "
           >
-            Our Story, Mission & Vision
+           {missionConfig.sectionTitle.badge}
           </motion.h1>
 
           <motion.h2
@@ -98,7 +62,7 @@ const MissionPage = () => {
               max-w-3xl
             "
           >
-            Our Journey and What Drives Us Forward
+            {missionConfig.sectionTitle.heading}
           </motion.h2>
 
           <motion.p
@@ -109,15 +73,14 @@ const MissionPage = () => {
               max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl
             "
           >
-            Bathora was founded with a passion for transforming everyday spaces
-            into beautifully designed, functional environments.
+           {missionConfig.sectionTitle.description}
           </motion.p>
 
         </motion.div>
 
         {/* CARDS */}
         <motion.div
-          variants={staggerContainerSmooth}
+          variants={staggerContainerSlow}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -129,19 +92,19 @@ const MissionPage = () => {
           "
         >
 
-          {missionCards.map((f, i) => {
+          {missionConfig.highlightCards.map((f, i) => {
             const isEven = i % 2 === 0;
 
             return (
               <motion.div
                 key={i}
                 variants={staggerSlideUpItem(i)}
-                className={`flex ${!isEven ? "lg:mt-10" : ""}`}
+                className={`flex ${!isEven ? "lg:mt-16" : ""}`}
               >
 
                 <Card
                   className={`
-                    rounded-lg text-cream shadow-sm
+                    rounded-lg text-cream shadow-sm p-4
                     w-full border-0
                     transition-all duration-300
                     m-auto
@@ -184,10 +147,6 @@ const MissionPage = () => {
         </motion.div>
 
       </section>
-
-      {/* BANNER SECTION */}
-      <GetEstimateSection />
-
     </main>
   );
 };

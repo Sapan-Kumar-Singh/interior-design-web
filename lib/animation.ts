@@ -1,4 +1,13 @@
-// animationConfig/variants.ts
+
+
+export const viewportOnce = {
+  initial: "hidden",
+  whileInView: "show",
+  viewport: {
+    once: true,
+    amount: 0.2,
+  },
+};
 
 // ── CONTAINERS ────────────────────────────────────────────────
 

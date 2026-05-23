@@ -1,6 +1,6 @@
 import React from 'react'
 import { Quote, Star } from "lucide-react"
-
+import Image from 'next/image';
 import {
   Card,
   CardContent,
@@ -10,7 +10,14 @@ import {
   CardTitle
 } from "../ui/card"
 
-const ReviewCard = () => {
+interface ReviewCardProps{
+imgSrc?:string;
+name:string;
+rating:number;
+review:string;
+role:string;
+}
+const ReviewCard = ({imgSrc,name,rating,review,role}:ReviewCardProps) => {
   return (
     <Card
       className="
@@ -30,8 +37,14 @@ const ReviewCard = () => {
 
         {/* TOP */}
         <CardTitle className="flex items-center justify-between gap-4">
-
-          <div
+          {imgSrc ? 
+          <Image
+            src={imgSrc}
+             alt={name}
+             fill
+             className="object-cover"
+            /> :
+           <div
             className="
               h-10 w-10
               bg-obsidian/80
@@ -45,73 +58,41 @@ const ReviewCard = () => {
               shrink-0
             "
           >
-            U
+            {name.slice(0,1).toUpperCase()}
           </div>
-
-          <Quote
-            size={30}
-            className="
-              text-gold-dark
-              opacity-80
-              shrink-0
-            "
-          />
+          }
+         <Quote size={30} className="text-gold-dark opacity-80 shrink-0"/>
         </CardTitle>
 
         <CardDescription className="space-y-4">
 
           {/* Rating Row */}
-          <div className="flex items-center gap-1 flex-wrap">
-            <Star
-              size={14}
-              className="text-gold-dark fill-gold-dark"
-            />
-            <Star
-              size={14}
-              className="text-gold-dark fill-gold-dark"
-            />
-            <Star
-              size={14}
-              className="text-gold-dark fill-gold-dark"
-            />
-            <Star
-              size={14}
-              className="text-gold-dark fill-gold-dark"
-            />
-            <Star
-              size={14}
-              className="text-gold-dark fill-gold-dark"
-            />
-          </div>
+           <div className="flex items-center gap-1">
+              {Array.from({ length:rating }).map((_, index) => (
+                <Star
+                  key={index}
+                  size={14}
+                  className="text-gold-dark fill-gold-dark"
+                />
+              ))}
+            </div>
         </CardDescription>
       </CardHeader>
 
       <CardContent className="p-0 mt-4 flex-1">
         <p className="text-obsidian text-sm sm:text-base leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque luctus consectetur blandit.
-          In finibus justo at ante convallis vulputate.
+         {review}
         </p>
       </CardContent>
 
       <CardFooter
-        className="
-          border-none
-          bg-inherit
-          flex
-          flex-col
-          items-start
-          gap-1
-          px-0
-
-        "
-      >
+        className="border-none bg-inherit flex flex-col items-start gap-1 px-0">
         <div className="font-bold text-sm text-obsidian">
-          David Wilson
+          {name}
         </div>
 
         <div className="font-semibold text-xs text-dark-gold">
-          Homeowner
+          {role}
         </div>
       </CardFooter>
     </Card>

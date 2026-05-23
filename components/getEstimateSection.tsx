@@ -1,92 +1,104 @@
-"use client"
+"use client";
+
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { slideUp, staggerContainerSlow } from "../lib/animation";
 
+import {
+  slideUp,
+  staggerContainerSlow,
+} from "../lib/animation";
+
+import { estimateSectionConfig } from "@/config/getEstimateConfig";
 
 const GetEstimateSection = () => {
+
   return (
-    <>
-       <section
+    <section
+      className="
+        relative
+        w-full
+        min-h-[220px]
+        sm:min-h-[280px]
+        md:min-h-[340px]
+        lg:min-h-[400px]
+        overflow-hidden
+      "
+    >
+      {/* BACKGROUND */}
+      <Image
+        src={estimateSectionConfig.background.src}
+        alt={estimateSectionConfig.background.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+
+      <div className="absolute inset-0 bg-obsidian/60" />
+
+      {/* CONTENT */}
+      <motion.div
+        variants={staggerContainerSlow}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
         className="
-          relative
-          w-full
-          h-[150px]
-          sm:h-[200px]
-          md:h-[300px]
-          lg:h-[400px]
-          overflow-hidden
-          mt-14
+          relative z-10
+          flex h-full items-center justify-center
+          px-4 sm:px-6 md:px-10 lg:px-16
+          py-10 sm:py-12 md:py-16
+          text-center
         "
       >
-        <Image
-          src="/images/mission/cover-bg.jpg"
-          alt="Estimate cover Background"
-          fill
-          priority
-          className="object-cover min-h-[150px]"
-        />
+        <div className="w-full max-w-3xl mx-auto">
 
-        <div className="absolute inset-0 bg-obsidian/60" />
+          {/* TITLE */}
+          <motion.h1
+            variants={slideUp}
+            className="
+              text-cream
+              font-semibold
+              leading-tight
+              text-2xl
+              sm:text-3xl
+              md:text-5xl
+            "
+          >
+            {estimateSectionConfig.title}
+          </motion.h1>
 
-        {/* ANIMATED CONTENT */}
-        <motion.div
-          variants={staggerContainerSlow}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative z-10 flex h-full items-center justify-center px-4 text-center"
-        >
-          <div className="max-w-3xl">
+          {/* DESCRIPTION */}
+          <motion.p
+            variants={slideUp}
+            className="
+              mt-4
+              text-cream
+              text-sm sm:text-base md:text-lg
+              max-w-2xl
+              mx-auto
+              leading-relaxed
+            "
+          >
+            {estimateSectionConfig.description}
+          </motion.p>
 
-            <motion.h2
-              variants={slideUp }
-              className="
-                text-cream
-                font-semibold
-                leading-tight
-                text-2xl
-                sm:text-3xl
-                md:text-5xl
-              "
-            >
-              Turn Your Vision Into a Space You’ll Love Every Day
-            </motion.h2>
+          {/* BUTTON */}
+          <motion.div
+            variants={slideUp}
+            className="mt-6 sm:mt-8 flex justify-center"
+          >
+            <Button>
+              {estimateSectionConfig.button.label}
 
-            <motion.p
-              variants={slideUp }
-              className="
-                mt-4
-                text-cream
-                text-sm
-                sm:text-base
-                md:text-lg
-                max-w-2xl
-                mx-auto
-              "
-            >
-              Let Bathora bring your vision to life with expert design,
-              premium materials, and flawless execution.
-            </motion.p>
+              {estimateSectionConfig.button.icon}
+            </Button>
+          </motion.div>
 
-            <motion.div
-              variants={slideUp }
-              className="mt-6 flex justify-center"
-            >
-              <Button
-              >
-                Request Free Estimate
-                <ArrowUpRight size={14} />
-              </Button>
-            </motion.div>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
 
-          </div>
-        </motion.div>
-      </section>
-    </>
-  )
-}
-
-export default GetEstimateSection
+export default GetEstimateSection;

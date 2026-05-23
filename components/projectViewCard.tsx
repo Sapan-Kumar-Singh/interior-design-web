@@ -2,28 +2,31 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import {AnimatePresence,motion,useInView} from "framer-motion"
+import { AnimatePresence, motion, useInView } from "framer-motion"
 
-import { Plus,Share2, X,ZoomIn,ZoomOut} from "lucide-react"
+import { Plus, Share2, X, ZoomIn, ZoomOut } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { ProjectAnimationDirection } from "@/config/projectConfig"
+import Link from "next/link"
 
-type Direction = "left" | "right" | "top" | "bottom"
 
-interface ProjectCardProps {
-    title: string
-    imgSrc: string
-    animationDirection: Direction
+export interface ProjectViewCardProps {
+    slug: string;
+    title: string;
+    imgSrc: string;
+    animationDirection: ProjectAnimationDirection;
 }
 
-const ProjectCard = ({
+const ProjectViewCard = ({
+    slug,
     title,
     imgSrc,
     animationDirection,
-}: ProjectCardProps) => {
+}: ProjectViewCardProps) => {
     const [open, setOpen] = useState(false)
-    const [scale, setScale] = useState(1)
-  // Viewport animation
+    const [scale, setScale] = useState(1);
+    // Viewport animation
     const ref = useRef(null)
 
     const isInView = useInView(ref, {
@@ -59,17 +62,17 @@ const ProjectCard = ({
         }
     }
 
-  
+
     // Direction offsets
     const slideOffset = {
-        left: {x: "-100%",y: 0},
-        right: {x: "100%",y: 0,},
-        top: { x: 0,y: "-100%",},
-        bottom: { x: 0,y: "100%",},
+        left: { x: "-100%", y: 0 },
+        right: { x: "100%", y: 0, },
+        top: { x: 0, y: "-100%", },
+        bottom: { x: 0, y: "100%", },
     }
 
     const { x, y } = slideOffset[animationDirection]
- // Prevent body scroll when modal opens
+    // Prevent body scroll when modal opens
     useEffect(() => {
         document.body.style.overflow = open ? "hidden" : ""
 
@@ -123,7 +126,28 @@ const ProjectCard = ({
                         />
                     </div>
                 </motion.div>
+                {/* always visble for md to small screen */}
+                <div
+                    className="w-full bg-gradient-to-t from-black/95 via-black/40 to-transparent 
+                        pb-12 pt-12  flex  flex-col items-center text-center absolute inset-x-0 bottom-0 z-10 lg:hidden">
+                    <Button
+                        className="rounded-full mb-4"
+                        onClick={() => setOpen(true)}
+                    >
+                        <Plus size={20} />
+                    </Button>
 
+                    <h3 className="text-cream text-xl font-semibold mb-4">
+                        {title}
+                    </h3>
+
+                    <Link
+                        href={`/projects/${slug}`}
+                        className="inline-flex bg-gold-dark hover:bg-gold-80 text-cream shrink-0 items-center justify-center rounded-sm border border-transparent text-[14px] font-semibold h-[36px] p-2 px-3.5 mx-1 sm:py-3 sm:pl-[10px] sm:pr-[10px] gap-1.5 hover:cursor-pointer"
+                    >
+                        Project details
+                    </Link>
+                </div>
                 {/* OVERLAY */}
                 <motion.div
                     variants={{
@@ -141,7 +165,8 @@ const ProjectCard = ({
                         duration: 0.5,
                         ease: "easeOut",
                     }}
-                    className=" absolute  inset-x-0 bottom-0  z-10">
+                    className="absolute inset-x-0 bottom-0 z-10 hidden lg:block"
+                >
                     <div
                         className="w-full bg-gradient-to-t from-black/95 via-black/40 to-transparent 
                         pb-4 pt-12 flex  flex-col items-center text-center">
@@ -156,9 +181,12 @@ const ProjectCard = ({
                             {title}
                         </h3>
 
-                        <Button>
+                        <Link
+                            href={`/projects/${slug}`}
+                            className="inline-flex bg-gold-dark hover:bg-gold-80 text-cream shrink-0 items-center justify-center rounded-sm border border-transparent text-[14px] font-semibold h-[36px] p-2 px-3.5 mx-1 sm:py-3 sm:pl-[10px] sm:pr-[10px] gap-1.5 hover:cursor-pointer"
+                        >
                             Project details
-                        </Button>
+                        </Link>
                     </div>
                 </motion.div>
             </motion.div>
@@ -241,4 +269,4 @@ const ProjectCard = ({
     )
 }
 
-export default ProjectCard;
+export default ProjectViewCard;

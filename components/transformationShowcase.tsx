@@ -2,7 +2,8 @@
 
 import { slideUp, staggerContainer } from '@/lib/animation'
 import { motion } from 'framer-motion';
-import BeforeAfterSlider from '../beforeAfterSlider';
+import { transformationShowcaseConfig } from '@/config/transformationShowcaseConfig';
+import TransformationSlide from './transformationSlide';
 
 
 const TransformationShowcase = () => {
@@ -25,7 +26,7 @@ const TransformationShowcase = () => {
                         <motion.h1
                             variants={slideUp}
                             className="text-gold text-xs sm:text-sm md:text-base font-semibold  tracking-wide">
-                            Before & After
+                            {transformationShowcaseConfig.badge}
                         </motion.h1>
 
                         <motion.h2
@@ -33,14 +34,14 @@ const TransformationShowcase = () => {
                             className="text-xl sm:text-2xl md:text-3xl  
                             lg:text-4xl xl:text-5xl font-semibold leading-tight
                            tracking-[-0.02em]  max-w-3xl capitalize">
-                            Real transformations, real impact
+                           {transformationShowcaseConfig.title}
                         </motion.h2>
 
                         <motion.p
                             variants={slideUp}
                             className="text-sm md:text-base text-obsidian/80 leading-relaxed
                                 max-w-xs sm:max-w-md md:max-w-xl">
-                            Watch outdated spaces turn into stunning modern interiors with our expert remodeling solutions.
+                            {transformationShowcaseConfig.description}
                         </motion.p>
 
                     </motion.div>
@@ -53,7 +54,17 @@ const TransformationShowcase = () => {
                         transition={{ delay: 2.5 }}
                         className="mt-10"
                     >
-                        <BeforeAfterSlider />
+                       {
+                        transformationShowcaseConfig.transformations.map((transformation,index)=>(
+                             <TransformationSlide 
+                              key={`${transformation.afterLabel}_${index}`}
+                              beforeTransformationImgSrc={transformation.beforeTransformationImgSrc}
+                              afterTransformationImgSrc={transformation.afterTransformationImgSrc}
+                              afterLabel={transformation.afterLabel}
+                              beforeLabel={transformation.beforeLabel} 
+                              />
+                        ))
+                       }
                     </motion.div>
                 </section>
 

@@ -6,6 +6,7 @@ import MissionPage from '../../missionPage'
 import WhyChooseUs from '../../whyChooseUs'
 import TeamMembers from '../../teamMembers'
 import { pageHeroConfig } from '@/config/aboutConfig'
+import GetEstimateSection from '@/components/getEstimateSection'
 
 const AboutSection = () => {
   return (
@@ -16,6 +17,7 @@ const AboutSection = () => {
       <AboutUs />
        
       <MissionPage />
+      <GetEstimateSection/>
       <WhyChooseUs />
       <TeamMembers />
     </>

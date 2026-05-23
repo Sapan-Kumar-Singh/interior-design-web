@@ -4,6 +4,7 @@ import Image from "next/image";
 interface PageHeroProps {
   children: ReactNode;
   imgSrc?: string;
+  alt?:string;
   className?: string;
   overlayClassName?: string;
   priority?: boolean;
@@ -12,6 +13,7 @@ interface PageHeroProps {
 const PageHero = ({
   children,
   imgSrc = "/images/cover-bg.jpg",
+  alt="Page hero background",
   className,
   overlayClassName,
   priority = true,
@@ -32,7 +34,7 @@ const PageHero = ({
       <div className="absolute inset-0 -z-10">
         <Image
           src={imgSrc}
-          alt="Page hero background"
+          alt={alt}
           fill
           priority={priority}
           sizes="100vw"

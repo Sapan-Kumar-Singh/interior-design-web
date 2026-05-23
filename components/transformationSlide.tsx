@@ -2,17 +2,28 @@ import { useState } from "react";
 import Image from "next/image";
 import { BackwardTriangleIcon, ForwardTriangleIcon } from "./icons/customIcons";
 
-const BeforeAfterSlider = () => {
+interface TransformationSlideProps {
+  beforeTransformationImgSrc: string;
+  afterTransformationImgSrc: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+}
+const TransformationSlide = ({
+    beforeTransformationImgSrc,
+    afterTransformationImgSrc,
+    beforeLabel,
+    afterLabel
+}:TransformationSlideProps) => {
     const [position, setPosition] = useState(50)
-
+     
     return (
         <div
             className="relative w-full h-[200px] sm:h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-2xl">
             {/* AFTER IMAGE (FULL) */}
             <div className="absolute inset-0">
                 <Image
-                    src="/images/projects/after_transformation.jpg"
-                    alt="After"
+                    src={afterTransformationImgSrc}
+                    alt="After Transformation Image"
                     fill
                     className="object-cover"
                 />
@@ -26,8 +37,8 @@ const BeforeAfterSlider = () => {
                 }}
             >
                 <Image
-                    src="/images/projects/before_transformation.jpg"
-                    alt="Before"
+                    src={beforeTransformationImgSrc}
+                    alt="Before Transformation Image"
                     fill
                     className="object-cover"
                 />
@@ -54,11 +65,11 @@ const BeforeAfterSlider = () => {
             {/* LABELS */}
             <div
                 className="absolute top-4 left-4 z-30  text-cream px-4 py-1 rounded-full text-sm font-semibold">
-                Before
+                {beforeLabel}
             </div>
 
             <div className="absolute top-4 right-4 z-30  text-cream px-4 py-1 rounded-full text-sm font-semibold">
-                After
+                {afterLabel}
             </div>
 
             {/* RANGE INPUT */}
@@ -73,4 +84,4 @@ const BeforeAfterSlider = () => {
     )
 }
 
-export default BeforeAfterSlider;
+export default TransformationSlide;

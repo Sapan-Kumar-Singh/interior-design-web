@@ -1,24 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef,  } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { slideRight } from "../../lib/animation";
+import { slideRight } from "../lib/animation";
+import { ServiceItem } from "@/config/serviceConfig";
+import Link from "next/link";
 
 
-type Service = {
-  image: string;
-  title: string;
-  description: string;
-};
-
-
-
-
-const SideCard = ({
-  service,
-}: {
-  service: Service;
-}) => {
+const ContentCard = ({slug,title,description,image}:ServiceItem) => {
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -34,24 +23,22 @@ const SideCard = ({
       >
         <div className="px-7 pt-7 pb-5 flex-none">
           <h2 className="text-obsidian text-3xl font-semibold leading-tight mb-3">
-            {service.title}
+            {title}
           </h2>
           <p className="text-obsidian/80  text-sm leading-relaxed mb-4 font-normal">
-            {service.description}
+            {description}
           </p>
-          <a
-            href="#"
+          <Link href={`/services/${slug}`}
             className="inline-flex items-center gap-1.5 text-gold hover:text-gold-dark text-sm font-medium underline underline-offset-4"
-           
           >
-            View Details{" "} <ArrowUpRight size={14}/>
-          </a>
+            View Details <ArrowUpRight size={14} />
+          </Link>
         </div>
  
         <div className="relative flex-1 mx-3.5 mb-3.5 rounded-xl overflow-hidden min-h-[160px]">
           <Image
-            src={service.image}
-            alt={service.title}
+            src={image}
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
@@ -62,4 +49,4 @@ const SideCard = ({
   );
 };
 
-export default SideCard;
+export default ContentCard;

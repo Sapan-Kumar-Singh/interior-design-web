@@ -1,7 +1,7 @@
 "use client";
 
-import PageHero from "../pageHero";
-import PageHeroContent from "../pageHeroContent";
+import PageHero from "../../pageHero";
+import PageHeroContent from "../../pageHeroContent";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -9,101 +9,33 @@ import {
   CircleCheckBig,
   House,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import { Button } from "../../ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { slideUp } from "@/lib/animation";
+import { otherServiceConfig, serviceDetailsConfig, serviceHelpCard } from "@/config/serviceDetailConfig";
+import notFound from "@/app/not-found";
 
-const ServiceDetails = () => {
-  const serviceOptions = [
-    {
-      title: "Kitchen remodeling",
-      link: "",
-    },
-    {
-      title: "Custom cabinetry",
-      link: "",
-    },
-    {
-      title: "Bathroom renovation",
-      link: "",
-    },
-    {
-      title: "Tile & flooring",
-      link: "",
-    },
-    {
-      title: "Full home remodeling",
-      link: "",
-    },
-  ];
+interface ServiceDetailsProps{
+  slug:string;
+}
+const ServiceDetails = ({slug}:ServiceDetailsProps) => {
+ 
+  const service =serviceDetailsConfig[slug];
 
-  const kitchenRemodelingFeatures = [
-    {
-      title: "Custom Kitchen Design",
-      description:
-        "Tailored kitchen layouts designed to match your lifestyle and preferences.",
-    },
-    {
-      title: "Cabinet Installation",
-      description:
-        "Premium cabinet solutions with modern finishes and optimized storage.",
-    },
-    {
-      title: "Countertops & Surfaces",
-      description:
-        "Durable and elegant countertop installations for a refined look.",
-    },
-    {
-      title: "Appliances Integration",
-      description:
-        "Seamless integration of modern appliances into your kitchen space.",
-    },
-    {
-      title: "Lighting Solutions",
-      description:
-        "Functional and aesthetic lighting setups to enhance the atmosphere.",
-    },
-    {
-      title: "Flooring & Backsplash",
-      description:
-        "Stylish flooring and backsplash options to complete your kitchen.",
-    },
-  ];
+  if (!service) {
+    notFound();
+  }
 
-  const benefits = [
-    {
-      title: "Improved functionality and workflow",
-    },
-    {
-      title: "Increased home value",
-    },
-    {
-      title: "Modern and stylish appearance",
-    },
-    {
-      title: "Better storage and organization",
-    },
-    {
-      title: "Enhanced lighting and comfort",
-    },
-  ];
 
   return (
     <>
-      <PageHero imgSrc="/images/services/service_cover_bg.jpg">
+      <PageHero imgSrc={service.pageHero.imgSrc}>
         <PageHeroContent
-          title="Services"
-          breadcrumb={
-            <>
-              <House size={14} className="text-primary" />
-              <span>Home</span>
-              <span>|</span>
-              <span>Services Details</span>
-            </>
-          }
-        />
+          title={service.pageHero.title}
+          breadcrumb={service.pageHero.breadcrumb}
+         />
       </PageHero>
 
       {/* MAIN SECTION */}
@@ -123,14 +55,14 @@ const ServiceDetails = () => {
               <Card className="bg-cream border-0 rounded-xl py-4 px-2">
                 <CardHeader className="pb-4">
                   <CardTitle className="font-bold text-sm sm:text-base md:text-lg lg:text-xl text-obsidian">
-                    Others Services
+                    {otherServiceConfig.title}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent className="flex flex-col gap-4">
-                  {serviceOptions.map((serviceOption, index) => (
+                  {otherServiceConfig.serviceOptions.map((serviceOption, index) => (
                     <motion.div
-                      key={serviceOption.title}
+                      key={serviceOption.slug}
                       variants={slideUp}
                       initial="hidden"
                       whileInView="show"
@@ -159,8 +91,8 @@ const ServiceDetails = () => {
               className="relative overflow-hidden rounded-2xl min-h-[180px]"
             >
               <Image
-                src="/images/serviceDetails/contact_card_cover.jpg"
-                alt="contact card background image"
+                src={serviceHelpCard.background.src}
+                alt={serviceHelpCard.background.alt}
                 fill
                 className="object-cover"
               />
@@ -175,7 +107,7 @@ const ServiceDetails = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="text-2xl font-semibold text-cream"
                 >
-                  Need Help?
+                  {serviceHelpCard.title}
                 </motion.h3>
 
                 <motion.p
@@ -186,7 +118,7 @@ const ServiceDetails = () => {
                   transition={{ delay: 0.1 }}
                   className="mt-4 text-sm leading-6 text-cream/95"
                 >
-                  Contact our team for expert advice and a free consultation.
+                 {serviceHelpCard.description}
                 </motion.p>
 
                 <motion.div
@@ -197,8 +129,8 @@ const ServiceDetails = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <Button className="mt-6">
-                    Contact us
-                    <ArrowUpRight size={16} />
+                   {serviceHelpCard.button.label}
+                    {serviceHelpCard.button.icon}
                   </Button>
                 </motion.div>
               </div>
@@ -217,8 +149,8 @@ const ServiceDetails = () => {
               className="relative h-[200px] sm:h-[250px] lg:h-[300px] overflow-hidden rounded-3xl"
             >
               <Image
-                src="/images/serviceDetails/kitchen_remodeling.jpg"
-                alt="Kitchen remodeling"
+                src={service.content.heroImage}
+                alt={service.content.heroImageAlt}
                 fill
                 className="object-cover"
               />
@@ -235,7 +167,7 @@ const ServiceDetails = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="text-xl lg:text-3xl font-bold leading-tight"
                 >
-                  Expert Kitchen Remodeling Solutions
+                  {service.content.heading}
                 </motion.h2>
 
                 <motion.p
@@ -246,24 +178,7 @@ const ServiceDetails = () => {
                   transition={{ delay: 0.1 }}
                   className="text-body"
                 >
-                  At Bathora, we specialize in creating beautiful, functional
-                  kitchens tailored to your lifestyle. Whether you’re looking
-                  for a modern upgrade or a complete transformation, our team
-                  delivers high-quality craftsmanship and innovative design
-                  solutions.
-                </motion.p>
-
-                <motion.p
-                  variants={slideUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-body"
-                >
-                  From layout planning to final finishes, we ensure every detail
-                  is carefully executed to create a kitchen that is both stylish
-                  and practical.
+                  {service.content.description}
                 </motion.p>
               </div>
 
@@ -276,11 +191,11 @@ const ServiceDetails = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="text-2xl font-semibold mb-6"
                 >
-                  What’s Included in Our Kitchen Remodeling
+                  {service.featuresSection.title}
                 </motion.h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {kitchenRemodelingFeatures.map((feature, index) => (
+                  {service.featuresSection.items.map((feature, index) => (
                     <motion.div
                       key={feature.title}
                       variants={slideUp}
@@ -289,7 +204,7 @@ const ServiceDetails = () => {
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ delay: index * 0.08 }}
                     >
-                      <Card className="h-full border-0 bg-muted/40 rounded-xl">
+                      <Card className="h-full border-0 bg-muted/40 rounded-xl p-4">
                         <CardHeader className="space-y-4">
                           <CardTitle className="text-lg leading-7 flex items-start gap-4 text-obsidian">
                             <CircleCheckBig
@@ -321,11 +236,11 @@ const ServiceDetails = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="text-2xl font-semibold mb-4"
                 >
-                  Benefits of Kitchen Remodeling
+                 {service.benefitsSection.title}
                 </motion.h3>
 
                 <div className="grid grid-cols-1 gap-2">
-                  {benefits.map((benefit, index) => (
+                  {service.benefitsSection.items.map((benefit, index) => (
                     <motion.div
                       key={benefit.title}
                       variants={slideUp}

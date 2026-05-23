@@ -3,13 +3,6 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import {
-  AlarmClock,
-  Mail,
-  MapPin,
-  PhoneCall,
-} from "lucide-react"
-
-import {
   Card,
   CardContent,
   CardDescription,
@@ -18,83 +11,13 @@ import {
 import { fadeUpReveal,staggerContainer } from "@/lib/animation"
 import InputForm from "../../inputForm"
 
-import { InputFormConfig } from "@/types/form"
 
+import { contactConfig} from "@/config/contactConfig"
 
 
 const ContactContent = () => {
-  const contactOptions = [
-    {
-      icon: <PhoneCall size={18} />,
-      label: "Call Now",
-      value: "(123) 456-7890",
-    },
-    {
-      icon: <Mail size={18} />,
-      label: "Email Us",
-      value: "info@bathora.com",
-    },
-    {
-      icon: <MapPin size={18} />,
-      label: "Office Location",
-      value: "123 Modern Lane, Design City",
-    },
-    {
-      icon: <AlarmClock size={18} />,
-      label: "Working Hours",
-      value: "Mon – Fri: 9 AM – 6 PM",
-    },
-  ]
-
-  const formConfig: InputFormConfig = {
-    title: "Send Us a Message",
-
-    description:
-      "Fill out the form below and our team will get back to you as soon as possible.",
-
-    inputFields: [
-      {
-        field: "fullName",
-        label: "Full Name",
-        type: "text",
-        required: true,
-        placeholder: "Your Name",
-      },
-      {
-        field: "email",
-        label: "Email Address",
-        type: "email",
-        required: true,
-        placeholder: "Your Email Address",
-        flex: 0.5,
-      },
-      {
-        field: "phoneNumber",
-        label: "Phone Number",
-        type: "text",
-        required: true,
-        placeholder: "Your Phone Number",
-        flex: 0.5,
-      },
-      {
-        field: "subject",
-        label: "Subject",
-        type: "text",
-        required: true,
-        placeholder: "Subject",
-      },
-      {
-        field: "message",
-        label: "Message",
-        type: "textarea",
-        rows: 5,
-        required: true,
-        placeholder: "Tell us about your project...",
-      },
-    ],
-    submitButtonText:"Send Message"
-  }
-
+ 
+  const {hero,contactOptions,contactImage,formConfig,map}=contactConfig;
   return (
     <main className="bg-white overflow-hidden">
       {/* HERO SECTION */}
@@ -127,7 +50,7 @@ const ContactContent = () => {
               tracking-wide
             "
           >
-            Contact Us
+            {hero.badge}
           </motion.h1>
 
           <motion.h2
@@ -141,7 +64,7 @@ const ContactContent = () => {
               max-w-3xl
             "
           >
-            Let’s Start Your Dream Project
+            {hero.title}
           </motion.h2>
 
           <motion.p
@@ -153,9 +76,7 @@ const ContactContent = () => {
               max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl
             "
           >
-            Get in touch with Bathora to discuss your kitchen
-            or bathroom remodeling needs. We’re here to help
-            you every step of the way.
+          {hero.description}
           </motion.p>
         </motion.div>
 
@@ -257,8 +178,8 @@ const ContactContent = () => {
             "
           >
             <Image
-              src="/images/contact/contact_form_card.jpg"
-              alt="contact form image"
+              src={contactImage.src}
+              alt={contactImage.alt}
               fill
               className="object-cover rounded-2xl"
             />
@@ -309,7 +230,7 @@ const ContactContent = () => {
         >
           <iframe
             title="Google Map"
-            src="https://maps.google.com/maps?width=675&height=400&hl=en&q=Ghaziabad&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+            src={map.mapUrl}
             className="
               absolute inset-0
               w-full h-full

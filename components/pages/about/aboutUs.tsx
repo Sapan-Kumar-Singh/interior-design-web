@@ -151,18 +151,11 @@ const AboutUs = () => {
                         viewport={{ once: true, amount: 0.15 }}
                         className="
                             grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4
-                            relative
-                            lg:-ml-[225px]
-                            mt-6
-                        ">
+                            relative lg:-ml-[225px] mt-6">
                         {aboutUsConfig.features.map((f, i) => (
                             <motion.div
                                 key={i}
                                 variants={featureItem(i)}
-                                // whileHover={{
-                                //     y: -6,
-                                //     transition: { duration: 0.25 },
-                                // }}
                             >
                                 <Card className="rounded-sm bg-cream shadow-sm h-full">
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceContent from '../../services/serviceContent'
+import ServiceContent from '../services/serviceContent'
 
 const ServicePreview = () => {
   return (

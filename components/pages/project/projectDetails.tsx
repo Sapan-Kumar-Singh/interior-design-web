@@ -1,7 +1,7 @@
 "use client";
 
-import PageHero from "../pageHero";
-import PageHeroContent from "../pageHeroContent";
+import PageHero from "../../pageHero";
+import PageHeroContent from "../../pageHeroContent";
 import {
   AlarmClock,
   CircleCheck,
@@ -19,115 +19,24 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import BeforeAfterSlider from "../beforeAfterSlider";
-import RemodelingBanner from "../services/remodelingBanner";
+} from "../../ui/card";
+import BeforeAfterSlider from "../../transformationSlide";
+import RemodelingBanner from "../../remodelingBanner";
+import { projectDetailsConfig } from "@/config/projectDetailsConfig";
 
-const ProjectDetails = () => {
-  const projectMeta = [
-    {
-      icon: <Sprout size={18}/>,
-      title: "Kitchen Remodeling",
-    },
-    {
-      icon: <ShieldUser size={18} />,
-      title: "Private Homeowner",
-    },
-    {
-      icon: <MapPin size={18} />,
-      title: "New York, USA",
-    },
-    {
-      icon: <AlarmClock size={18} />,
-      title: "6 Weeks",
-    },
-  ];
-
-  const designDetails = {
-    title: "Design Concept",
-    description:
-      "The design concept centered around minimalism and luxury. A neutral color palette combined with warm textures creates a welcoming yet refined atmosphere.",
-    content: [
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Clean lines and open space",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Custom cabinetry with soft-close features",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Marble countertops for a premium finish",
-      },
-    ],
-  };
-
-  const keyFeatures = {
-    title: "Key Features & Highlights",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-    content: [
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Custom-built modern cabinetry",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "High-end marble countertops",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Smart storage solutions",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Energy-efficient lighting system",
-      },
-      {
-        icon: <CircleCheck size={18} />,
-        label: "Premium appliances integration",
-      },
-    ],
-  };
-
-  const finishingDetails = {
-    title: "Materials & Finishes",
-    description:
-      "We selected high-quality materials to ensure durability and a luxurious look:",
-    materialsAndFinishes: [
-      {
-        label: "Cabinetry",
-        value: "Matte finish custom wood cabinets",
-      },
-      {
-        label: "Countertops",
-        value: "Natural marble stone",
-      },
-      {
-        label: "Flooring",
-        value: "Large-format porcelain tiles",
-      },
-      {
-        label: "Backsplash",
-        value: "Minimalist stone tile design",
-      },
-    ],
-  };
+interface ProjectDetailsProps{
+  slug:string;
+}
+const ProjectDetails = ({slug}:ProjectDetailsProps) => {
+  const details=projectDetailsConfig[slug];
+  
 
   return (
     <>
-      <PageHero imgSrc="/images/services/service_cover_bg.jpg">
+      <PageHero imgSrc={details.pageHero.imgSrc}>
         <PageHeroContent
-          title="Project Details"
-          breadcrumb={
-            <>
-              <House size={14} className="text-primary" />
-              <span>Home</span>
-              <span>|</span>
-              <span>Project Details</span>
-            </>
-          }
+          title={details.pageHero.title}
+          breadcrumb={details.pageHero.breadcrumb}
         />
       </PageHero>
 
@@ -142,8 +51,8 @@ const ProjectDetails = () => {
           className="relative h-[220px] sm:h-[300px] lg:h-[350px] overflow-hidden rounded-3xl"
         >
           <Image
-            src="/images/serviceDetails/kitchen_remodeling.jpg"
-            alt="Kitchen remodeling"
+            src={details.heroImage.src}
+            alt={details.heroImage.alt}
             fill
             className="object-cover"
           />
@@ -161,21 +70,14 @@ const ProjectDetails = () => {
             className="space-y-5"
           >
             <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-obsidian">
-              Project Overview
+              {details.overview.title}
             </h1>
 
             <p className="text-body leading-8">
-              This project involved a complete transformation of an outdated
-              kitchen into a sophisticated, modern space. The goal was to
-              create an open-concept layout with improved functionality, sleek
-              aesthetics, and high-end finishes.
+            {details.overview.descriptions}
             </p>
 
-            <p className="text-body leading-8">
-              Our team focused on maximizing space, enhancing lighting, and
-              integrating smart storage solutions to ensure both beauty and
-              practicality.
-            </p>
+           
           </motion.div>
 
           {/* META CARD */}
@@ -194,7 +96,7 @@ const ProjectDetails = () => {
 
               <CardContent className="mt-6">
                 <ul className="space-y-6">
-                  {projectMeta.map((meta, index) => (
+                  {details.projectMeta.map((meta, index) => (
                     <motion.li
                       key={meta.title}
                       variants={slideUp}
@@ -226,7 +128,12 @@ const ProjectDetails = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <BeforeAfterSlider />
+          <BeforeAfterSlider 
+          beforeTransformationImgSrc={details.transformation.beforeImage} 
+          afterTransformationImgSrc={details.transformation.afterImage} 
+          afterLabel={details.transformation.afterLabel}
+          beforeLabel={details.transformation.beforeLabel}
+          />
         </motion.div>
 
         {/* DETAILS CARDS */}
@@ -242,17 +149,17 @@ const ProjectDetails = () => {
             <Card className="h-full border-0 bg-muted/40 rounded-2xl">
               <CardHeader className="space-y-4">
                 <CardTitle className="text-2xl">
-                  {designDetails.title}
+                  {details.designDetails.title}
                 </CardTitle>
 
                 <CardDescription className="text-body leading-7">
-                  {designDetails.description}
+                  {details.designDetails.description}
                 </CardDescription>
               </CardHeader>
 
               <CardContent>
                 <ul className="space-y-4">
-                  {designDetails.content.map((detail, index) => (
+                  {details.designDetails.content.map((detail, index) => (
                     <motion.li
                       key={detail.label}
                       variants={slideUp}
@@ -286,17 +193,17 @@ const ProjectDetails = () => {
             <Card className="h-full border-0 bg-muted/40 rounded-2xl">
               <CardHeader className="space-y-4">
                 <CardTitle className="text-2xl">
-                  {keyFeatures.title}
+                  {details.keyFeatures.title}
                 </CardTitle>
 
                 <CardDescription className="text-body leading-7">
-                  {keyFeatures.description}
+                  {details.keyFeatures.description}
                 </CardDescription>
               </CardHeader>
 
               <CardContent>
                 <ul className="space-y-4">
-                  {keyFeatures.content.map((keyFeature, index) => (
+                  {details.keyFeatures.content.map((keyFeature, index) => (
                     <motion.li
                       key={keyFeature.label}
                       variants={slideUp}
@@ -331,16 +238,16 @@ const ProjectDetails = () => {
         >
           <div className="space-y-3">
             <h2 className="text-2xl sm:text-3xl font-bold">
-              {finishingDetails.title}
+              {details.finishingDetails.title}
             </h2>
 
             <p className="text-body leading-7">
-              {finishingDetails.description}
+              {details.finishingDetails.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {finishingDetails.materialsAndFinishes.map((detail, index) => (
+            {details.finishingDetails.materialsAndFinishes.map((detail, index) => (
               <motion.div
                 key={detail.label}
                 variants={slideUp}
@@ -370,19 +277,13 @@ const ProjectDetails = () => {
           className="space-y-5"
         >
           <h2 className="text-2xl sm:text-3xl font-bold">
-            Challenges & Solutions
+           {details.challenges.title}
           </h2>
 
           <p className="text-body leading-8">
-            The original kitchen had limited space and poor lighting. Our team
-            redesigned the layout to create an open flow and installed layered
-            lighting to brighten the entire space.
+           {details.challenges.descriptions}
           </p>
 
-          <p className="text-body leading-8">
-            We also introduced custom storage solutions to maximize usability
-            without compromising aesthetics.
-          </p>
         </motion.div>
 
         {/* CTA */}

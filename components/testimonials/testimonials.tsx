@@ -1,39 +1,24 @@
 "use client"
 
-import {
-    imageReveal,
-    slideUp,
-    staggerContainerSlow,
-} from "@/lib/animation"
+import { imageReveal, slideUp, staggerContainerSlow, } from "@/lib/animation"
 
-import {
-    motion,
-    useInView,
-} from "framer-motion"
+import { motion, useInView, } from "framer-motion";
 
 import React, { useRef } from "react"
 
 import Image from "next/image"
 
-import {
-    ChevronLeft,
-    ChevronRight,
-} from "lucide-react"
+import { ChevronLeft, ChevronRight, } from "lucide-react"
 
 import { Button } from "../ui/button"
 
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "../ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "../ui/carousel"
 
 import MasterReviewCard from "./masterReviewCard"
 import ReviewCard from "./reviewCard"
 
 import Autoplay from "embla-carousel-autoplay"
+import { testimonialsConfig } from "@/config/testimonialsConfig";
 
 const Testimonials = () => {
     const sectionRef = useRef(null)
@@ -42,7 +27,7 @@ const Testimonials = () => {
         once: true,
         amount: 0.15,
     })
-
+    
     return (
         <section
             ref={sectionRef}
@@ -55,8 +40,8 @@ const Testimonials = () => {
                 className="absolute inset-0"
             >
                 <Image
-                    src="/images/testimonial/testimonials_cover_bg.jpg"
-                    alt="Testimonials background"
+                    src={testimonialsConfig.background.src}
+                    alt={testimonialsConfig.background.alt}
                     fill
                     priority
                     className="object-cover"
@@ -81,16 +66,16 @@ const Testimonials = () => {
                         <motion.h1
                             variants={slideUp}
                             className="text-sm sm:text-base  font-semibold text-cream  mb-3 tracking-wide">
-                            Testimonials
+                            {testimonialsConfig.badge}
                         </motion.h1>
 
                         <motion.h2
                             variants={slideUp}
                             className="text-xl sm:text-2xl lg:text-3xl 
                             font-bold leading-tight tracking-[-0.02em]">
-                            What Our Clients Say
+                            {testimonialsConfig.title.firstLine}
                             <br className="hidden sm:block" />
-                            About Bathora
+                            {testimonialsConfig.title.secondLine}
                         </motion.h2>
                     </div>
 
@@ -100,13 +85,13 @@ const Testimonials = () => {
                         <motion.p
                             variants={slideUp}
                             className="text-sm sm:text-base  leading-relaxed  text-cream/90 lg:text-right">
-                            Real feedback from homeowners who
+                            {testimonialsConfig.description.firstLine}
                             <br className="hidden sm:block" />
-                            trusted us to transform their spaces
+                            {testimonialsConfig.description.secondLine}
                         </motion.p>
 
                         {/* OPTIONAL CUSTOM BUTTONS */}
-                        <motion.div
+                        {/* <motion.div
                             variants={slideUp}
                             className="hidden lg:flex items-center gap-3">
                             <Button
@@ -122,7 +107,7 @@ const Testimonials = () => {
                                 className="rounded-full bg-cream hover:bg-cream/90 text-black">
                                 <ChevronRight size={18} />
                             </Button>
-                        </motion.div>
+                        </motion.div> */}
                     </div>
                 </motion.div>
 
@@ -136,7 +121,11 @@ const Testimonials = () => {
                         animate={isInView ? "show" : "hidden"}
                         className="w-full lg:w-[32%] flex">
                         <div className="w-full">
-                            <MasterReviewCard />
+                            <MasterReviewCard
+                                title={testimonialsConfig.masterReview.title}
+                                rating={testimonialsConfig.masterReview.rating}
+                                description={testimonialsConfig.masterReview.description}
+                            />
                         </div>
                     </motion.div>
 
@@ -160,34 +149,24 @@ const Testimonials = () => {
                             className="w-full"
                         >
                             <CarouselContent className="-ml-4">
-                                <CarouselItem
-                                    className="pl-4 basis-full md:basis-1/2">
-                                    <ReviewCard />
-                                </CarouselItem>
-
-                                <CarouselItem
-                                    className="pl-4 basis-full md:basis-1/2">
-                                    <ReviewCard />
-                                </CarouselItem>
-
-                                <CarouselItem
-                                    className="pl-4 basis-full md:basis-1/2">
-                                    <ReviewCard />
-                                </CarouselItem>
-
-                                <CarouselItem
-                                    className=" pl-4 basis-full md:basis-1/2">
-                                    <ReviewCard />
-                                </CarouselItem>
+                                {
+                                    testimonialsConfig.reviews.map((reviewDetail) => {
+                                        return (
+                                            <CarouselItem key={reviewDetail.name} className="pl-4 basis-full md:basis-1/2">
+                                                <ReviewCard
+                                                    imgSrc={reviewDetail.imgSrc}
+                                                    name={reviewDetail.name}
+                                                    rating={reviewDetail.rating}
+                                                    review={reviewDetail.review}
+                                                    role={reviewDetail.role} />
+                                            </CarouselItem>
+                                        )
+                                    })
+                                }
                             </CarouselContent>
 
                             {/* BUILT-IN NAVIGATION */}
-                            <CarouselPrevious
-                                className="hidden lg:flex-left-5 bg-cream
-                   text-black border-0 hover:bg-cream/90"/>
-
-                            <CarouselNext
-                                className="hidden lg:flex-right-5  bg-cream text-black border-0  hover:bg-cream/90"/>
+                            
                         </Carousel>
                     </motion.div>
                 </div>

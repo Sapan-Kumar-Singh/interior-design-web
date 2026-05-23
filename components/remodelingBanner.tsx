@@ -1,10 +1,11 @@
 "use client"
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from './ui/button'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { imageReveal, slideUp, staggerContainerSlow } from '../../lib/animation'
+import { imageReveal, slideUp, staggerContainerSlow } from '../lib/animation'
+import { remodelingBannerConfig } from '@/config/remodelingConfig'
 
 
 const RemodelingBanner = () => {
@@ -25,8 +26,8 @@ const RemodelingBanner = () => {
                     animate={isInView ? "show" : "hidden"}
                 >
                     <Image
-                        src="/images/services/remodeling_cover.jpg"
-                        alt="Service remodeling cover image"
+                        src={remodelingBannerConfig.background.src}
+                        alt={remodelingBannerConfig.background.alt}
                         width={800}
                         height={600}
                         className="w-full object-cover h-[250px] lg:h-[300px]"
@@ -47,20 +48,20 @@ const RemodelingBanner = () => {
                         variants={slideUp}
                         className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-cream mb-3"
                     >
-                        Ready to Start Your Remodeling Project?
+                        {remodelingBannerConfig.content.title}
                     </motion.h1>
 
                     <motion.p
                         variants={slideUp}
                         className="text-sm sm:text-base text-cream/90 "
                     >
-                        Let Bathora help you design and build a space you'll love for years to come
+                       {remodelingBannerConfig.content.description}
                     </motion.p>
 
                     <div className="overflow-hidden inline-block">
                         <motion.div variants={slideUp}>
                             <Button className="mt-6">
-                                Request Free Estimate <ArrowUpRight size={14} />
+                            {remodelingBannerConfig.content.button.label} {remodelingBannerConfig.content.button.icon}
                             </Button>
                         </motion.div>
                     </div>

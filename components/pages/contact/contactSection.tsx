@@ -1,18 +1,13 @@
-import { House } from "lucide-react"
+
 import PageHero from "../../pageHero"
 import PageHeroContent from "../../pageHeroContent"
 import ContactContent from "./contactContent"
-
+import { pageHeroConfig } from "@/config/contactConfig"
 const ContactSection = () => {
   return (
     <>
-      <PageHero imgSrc='/images/contact/contact_cover_bg.jpg'>
-        <PageHeroContent title='Contact' breadcrumb={<>
-          <House size={14} className="text-primary" />
-          <span>Home</span>
-          <span>|</span>
-          <span>Contact</span>
-        </>} />
+      <PageHero imgSrc={pageHeroConfig.imgSrc}>
+        <PageHeroContent title={pageHeroConfig.title} breadcrumb={pageHeroConfig.breadcrumb}/>
       </PageHero>
       <ContactContent/>
     </>

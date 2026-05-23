@@ -1,5 +1,5 @@
 import React from 'react'
-import OurProjects from '../../project/ourProjects'
+import OurProjects from '../project/ourProjects'
 
 const ProjectsPreview = () => {
   return (
