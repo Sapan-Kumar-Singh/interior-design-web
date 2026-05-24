@@ -8,24 +8,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { navLinks } from "@/config/navbarConfig";
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const pathName = usePathname();
+
   // Navbar background on scroll
   useEffect(() => {
     const onScroll = () => {
@@ -63,7 +59,10 @@ export default function Navbar() {
         <ul className=" hidden md:flex items-center  gap-10 list-none m-0 p-0 ">
 
            {navLinks.map(({ href, label }) => {
-        const isActive = pathname === href;
+             const isActive =
+               href === "/"
+                 ? pathName === "/"
+                 : pathName.startsWith(href);
 
         return (
           <li key={href}>

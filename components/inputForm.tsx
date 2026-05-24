@@ -32,6 +32,7 @@ const InputForm = (formConfig: InputFormConfig) => {
         <Card
             className={`
                 w-full
+                h-full
                 bg-white/96
                 backdrop-blur-md
                 border border-white/20
@@ -73,7 +74,7 @@ const InputForm = (formConfig: InputFormConfig) => {
                 </CardContent>
 
                 <CardFooter
-                    className="flex flex-col bg-inherit px-0 py-4 border-none">
+                    className="flex flex-col bg-inherit px-0 py-4 my-4 border-none">
                     <Button
                         type="submit"
                         className="w-full sm:w-full">

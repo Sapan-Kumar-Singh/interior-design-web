@@ -2,53 +2,17 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "@/components/icons/customIcons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { slideUp, staggerContainer } from "@/lib/animation";
-
-
-const socialIcons = {
-    facebook: <FacebookIcon />,
-    twitter: <TwitterIcon />,
-    youtube: <YoutubeIcon />,
-    instagram: <InstagramIcon />
-}
+import { footerConfig } from "@/config/footerConfig";
 
 
 
 const Footer = () => {
-    const quickLinks = [
-        { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
-        { label: "Our Projects", href: "/projects" },
-        { label: "Our Services", href: "/services" },
-        { label: "Contact Us", href: "/contact", badge: "New" },
-    ];
 
-    const services = [
-        { label: "Kitchen Remodeling", href: "/services/kitchen" },
-        { label: "Bathroom Renovation", href: "/services/bathroom" },
-        { label: "Custom Cabinetry", href: "/services/cabinetry" },
-        { label: "Tile & Flooring", href: "/services/flooring" },
-        { label: "Lighting & Fixtures", href: "/services/lighting", badge: "New" },
-    ];
-
-    const contactInfo=[{
-        icon:<MapPin  size={14} className="text-primary"/>,
-        label:"123 Modern Lane, Design City, USA"
-    },{
-        icon:<Phone size={14} className="text-primary"/>,
-        label:"+91-333344455"
-    },{
-        icon:<Mail size={14} className="text-primary"/>,
-        label:"info@bathora.com"
-    },{
-        icon:<Clock size={14} className="text-primary"/>,
-        label:"Mon – Fri: 9 AM – 6 PM"
-    }]
-
+    const { content,quickLinks,services,socialIcons,contactInfo,} = footerConfig;
+       
     return (
         <footer className="bg-obsidian text-cream">
 
@@ -57,15 +21,15 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
                     {/* HEADING */}
-                    <motion.h2
+                    <motion.h1
                         variants={slideUp}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.3 }}
-                        className=" text-cream font-semibold text-xl sm:text-2xl lg:text-3xl leading-tight tracking-tight">
-                        Transform Your Home,<br />
-                        One Email At A Time
-                    </motion.h2>
+                        className="text-cream font-semibold text-xl sm:text-2xl lg:text-3xl leading-tight tracking-tight"
+                    >
+                      {content.newsletterTitle}
+                    </motion.h1>
 
                     {/* DESCRIPTION */}
                     <motion.p
@@ -75,8 +39,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                         className="text-cream/80 text-sm sm:text-base leading-relaxed"
                     >
-                        Subscribe to our newsletter and get exclusive kitchen & bathroom
-                        design tips, remodeling inspiration.
+                      {content.newsletterDescription}
                     </motion.p>
 
                     {/* INPUT + BUTTON */}
@@ -114,13 +77,11 @@ const Footer = () => {
                     >
                         {/* LOGO */}
                         <div className="text-2xl font-bold tracking-tight">
-                            <span className="text-gold">B</span>athora
+                            <span className="text-gold">{content.brandName.slice(0,1)}</span>{content.brandName.slice(1)}
                         </div>
 
                         <p className="text-cream/50 text-sm leading-relaxed">
-                            Bathora is your partner in transforming kitchens & bathrooms into
-                            luxurious, functional spaces. We combine modern design with expert
-                            craftsmanship to deliver results that inspire.
+                           {content.brandDescription}
                         </p>
 
                         {/* SOCIAL ICONS */}
@@ -131,16 +92,20 @@ const Footer = () => {
                             viewport={{ once: true }}
                             className="flex gap-3"
                         >
-                            {Object.entries(socialIcons).map(([key, icon]) => (
-                                <motion.a
+                            {socialIcons.map(({ key, icon, href }) => (
+                                <motion.div
                                     key={key}
-                                    href="#"
                                     variants={slideUp}
                                     whileHover={{ y: -3, scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className=" w-9 h-9 rounded-full border border-white/20 flex items-center justify-center  text-cream/60 hover:text-cream  hover:border-white/50 transition-colors duration-200 ">
-                                    {icon}
-                                </motion.a>
+                                >
+                                    <Link
+                                        href={href}
+                                        className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-cream/60 hover:text-cream hover:border-white/50 transition-colors duration-200"
+                                    >
+                                        {icon}
+                                    </Link>
+                                </motion.div>
                             ))}
                         </motion.div>
                     </motion.div>
@@ -153,7 +118,7 @@ const Footer = () => {
                         viewport={{ once: true, amount: 0.2 }}
                     >
                         <h3 className="text-cream font-semibold text-base mb-5">
-                            Quick Links
+                            {content.companyTitle}
                         </h3>
                         <motion.ul
                             variants={staggerContainer}
@@ -189,7 +154,7 @@ const Footer = () => {
                         viewport={{ once: true, amount: 0.2 }}
                     >
                         <h3 className="text-cream font-semibold text-base mb-5">
-                            Our Services
+                           {content.servicesTitle}
                         </h3>
                         <motion.ul
                             variants={staggerContainer}
@@ -225,7 +190,7 @@ const Footer = () => {
                         viewport={{ once: true, amount: 0.2 }}
                     >
                         <h3 className="text-cream font-semibold text-base mb-5">
-                            Contact Info
+                            {content.contactTitle}
                         </h3>
                         <motion.ul
                             variants={staggerContainer}
@@ -258,14 +223,16 @@ const Footer = () => {
                 viewport={{ once: true }}
             >
                 <div className=" max-w-7xl mx-auto px-4 sm:px-8 lg:px-16  py-5 flex flex-col sm:flex-row items-center justify-between  gap-3 text-cream/40 text-xs ">
-                    <span>© TemplateOrbit.Com</span>
+                    <span>
+                       {content.copyright}
+                    </span>
                     <div className="flex gap-4">
                         <Link href="/privacy" className="hover:text-cream transition-colors duration-200">
-                            Privacy Policy
+                           {content.privacyText}
                         </Link>
                         <span>|</span>
                         <Link href="/terms" className="hover:text-cream transition-colors duration-200">
-                            Terms & Conditions
+                            {content.termsText}
                         </Link>
                     </div>
                 </div>
