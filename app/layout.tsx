@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "./footer";
 import { WhatsappIcon } from "@/components/icons/customIcons";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { slideUp, staggerContainer } from "@/lib/animation";
 import { footerConfig } from "@/config/footerConfig";
+import BrandName from "@/components/brandName";
 
 
 
@@ -76,9 +77,7 @@ const Footer = () => {
                         className="space-y-5"
                     >
                         {/* LOGO */}
-                        <div className="text-2xl font-bold tracking-tight">
-                            <span className="text-gold">{content.brandName.slice(0,1)}</span>{content.brandName.slice(1)}
-                        </div>
+                        <BrandName showLogo={false}/>
 
                         <p className="text-cream/50 text-sm leading-relaxed">
                            {content.brandDescription}

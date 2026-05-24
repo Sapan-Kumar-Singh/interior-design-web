@@ -53,7 +53,7 @@ export const testimonialsConfig: TestimonialsConfig = {
 
   title: {
     firstLine: "What Our Clients Say",
-    secondLine: "About Bathora",
+    secondLine: "About Apex",
   },
 
   description: {
@@ -70,7 +70,7 @@ export const testimonialsConfig: TestimonialsConfig = {
     },
 
     description:
-      "Homeowners consistently choose Bathora for our quality craftsmanship, attention to detail, and reliable service.",
+      "Homeowners consistently choose Apex for our quality craftsmanship, attention to detail, and reliable service.",
   },
 
   reviews: [
@@ -79,7 +79,7 @@ export const testimonialsConfig: TestimonialsConfig = {
       name: "Sophia Carter",
       role: "Homeowner",
       review:
-        "Bathora completely transformed our kitchen. The team was professional, creative, and detail-oriented from start to finish.",
+        "Apex completely transformed our kitchen. The team was professional, creative, and detail-oriented from start to finish.",
       rating: 5,
     },
 

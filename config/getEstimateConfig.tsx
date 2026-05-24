@@ -27,7 +27,7 @@ export const estimateSectionConfig: EstimateSectionConfig = {
   title: "Turn Your Vision Into a Space You’ll Love Every Day",
 
   description:
-    "Let Bathora bring your vision to life with expert design, premium materials, and flawless execution.",
+    "Let Apex bring your vision to life with expert design, premium materials, and flawless execution.",
 
   background: {
     src: "/images/estimation/estimate_cover_bg.jpg",

@@ -67,15 +67,13 @@ export const pageHeroConfig:PageHeroConfig = {
 
 export const aboutUsConfig:AboutUsConfig = {
   badge: "About Us",
-
   title: {
-    first: "Modern Kitchen And Bathroom",
-    highlight: "Renovations",
-    second: "built for Living",
+    first: "Building ",
+    highlight: "Inspired Spaces",
+    second: "For Modern Lifestyles",
   },
 
-  description:
-    "Bathora is dedicated to transforming kitchens and bathrooms into elegant, functional spaces that elevate everyday living. With years of experience and a passion for design, we bring creativity, precision, and quality into every project we undertake. From concept to completion, our team works closely with homeowners to understand their vision.",
+  description:"At Apex Interiors and Engineering, we specialize in creating modern spaces that combine innovative interior design with strong engineering and architectural planning. Founded by a team of passionate civil engineers, our company is dedicated to delivering creative, functional, and structurally efficient solutions tailored to the unique needs of every client. From interior designing, space planning, and architectural concepts to structural design, drafting, and project execution, we bring creativity, technical expertise, and attention to detail into every project we undertake. We believe that great spaces are not only visually impressive but also practical, comfortable, durable, and thoughtfully engineered for everyday living and working. Our goal is to transform ideas into elegant and well-planned environments that reflect modern lifestyles while maintaining the highest standards of quality, precision, and professionalism.",
 
   video: {
     src: "/videos/about-content.mp4",
@@ -103,21 +101,18 @@ export const aboutUsConfig:AboutUsConfig = {
   features: [
     {
       icon: <Layers size={20}/>,
-      title: "Customized Design Solutions",
-      content:
-        "We tailor every project to your lifestyle, preferences, and budget with precision.",
+      title: "Customized Interior & Engineering Solutions",
+      content:"We craft intelligent interior spaces and engineering designs tailored to your lifestyle, vision, and functional needs — blending creativity, comfort, and structural precision in every project.",
     },
     {
       icon: <Wrench size={20}/>,
-      title: "Premium Materials & Finishes",
-      content:
-        "Only the finest materials make it into your home — beauty that lasts decades.",
+      title: "Premium Quality Materials & Modern Finishes",
+      content:"From elegant interiors to durable engineering execution",
     },
     {
       icon: <NotebookText size={20}/>,
-      title: "Transparent Pricing & Planning",
-      content:
-        "No surprises. Clear quotes, honest timelines, and full accountability.",
+      title: "Transparent Planning & Reliable Execution",
+      content:"We believe in clear communication, honest pricing, and timely project delivery",
     },
   ],
 };

@@ -74,7 +74,7 @@ export const contactConfig: ContactConfig = {
     title: "Let’s Start Your Dream Project",
 
     description:
-      "Get in touch with Bathora to discuss your kitchen or bathroom remodeling needs. We’re here to help you every step of the way.",
+      "Get in touch with Apex to discuss your kitchen or bathroom remodeling needs. We’re here to help you every step of the way.",
   },
 
   contactOptions: [
@@ -87,7 +87,7 @@ export const contactConfig: ContactConfig = {
     {
       icon: <Mail size={18} />,
       label: "Email Us",
-      value: "info@bathora.com",
+      value: "info@apex.com",
     },
 
     {

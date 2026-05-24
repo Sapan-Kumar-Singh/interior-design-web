@@ -26,7 +26,7 @@ export const missionConfig: MissionConfig = {
     heading: "Our Journey and What Drives Us Forward",
 
     description:
-      "Bathora was founded with a passion for transforming everyday spaces into beautifully designed, functional environments.",
+      "Apex was founded with a passion for transforming everyday spaces into beautifully designed, functional environments.",
   },
 
   highlightCards: [

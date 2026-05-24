@@ -8,12 +8,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { navLinks } from "@/config/navbarConfig";
+import { brandName, navLinks } from "@/config/navbarConfig";
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import BrandName from "./brandName";
 
 
 
@@ -38,37 +40,37 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50  transition-all duration-500
-        ${
-          scrolled
-            ? "bg-obsidian/85 backdrop-blur-lg border-b border-white/10 py-3"
-            : "bg-transparent border-b border-transparent py-6"
+        ${scrolled
+          ? "bg-obsidian/85 backdrop-blur-lg border-b border-white/10 py-3"
+          : "bg-transparent border-b border-transparent py-6"
         }
       `}
     >
       <div
         className=" max-w-7xl  mx-auto  flex items-center justify-between px-4  sm:px-6 lg:px-8">
         {/* LOGO */}
-        <Link  href="/" className=" flex items-center gap-3 group select-none no-underline">
-          
-          <span className=" font-serif  text-xl font-light  tracking-[0.14em] text-cream uppercase">
-            Lumière
-          </span>
+        <Link
+          href="/"
+          className="flex items-center gap-3 select-none group"
+        >
+          {/* BRAND TEXT */}
+          <BrandName/>
         </Link>
 
         {/* DESKTOP NAV */}
         <ul className=" hidden md:flex items-center  gap-10 list-none m-0 p-0 ">
 
-           {navLinks.map(({ href, label }) => {
-             const isActive =
-               href === "/"
-                 ? pathName === "/"
-                 : pathName.startsWith(href);
+          {navLinks.map(({ href, label }) => {
+            const isActive =
+              href === "/"
+                ? pathName === "/"
+                : pathName.startsWith(href);
 
-        return (
-          <li key={href}>
-            <Link
-              href={href}
-              className={`
+            return (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={`
                 relative
                 pb-1
                 text-[11px]
@@ -85,18 +87,17 @@ export default function Navbar() {
                 after:transition-all
                 after:duration-300
                 
-                ${
-                  isActive
-                    ? "text-cream after:w-full"
-                    : "text-cream/70 hover:text-cream after:w-0 hover:after:w-full"
-                }
+                ${isActive
+                      ? "text-cream after:w-full"
+                      : "text-cream/70 hover:text-cream after:w-0 hover:after:w-full"
+                    }
               `}
-            >
-              {label}
-            </Link>
-          </li>
-        );
-      })}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* MOBILE MENU */}
@@ -131,10 +132,7 @@ export default function Navbar() {
                     href="/"
                     onClick={() => setOpen(false)}
                     className="flex items-center  gap-3 no-underline">
-                    <span
-                      className="font-serif  text-lg font-light tracking-[0.14em] text-cream  uppercase">
-                      Lumière
-                    </span>
+                     <BrandName showLogo={false}/>
                   </Link>
                 </SheetTitle>
               </SheetHeader>

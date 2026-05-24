@@ -31,7 +31,7 @@ export const remodelingBannerConfig: RemodelingBannerConfig = {
   },
   content: {
     title:"Ready to Start Your Remodeling Project?",
-    description:"Let Bathora help you design and build a space you'll love for years to come",
+    description:"Let Apex help you design and build a space you'll love for years to come",
     button: {
       label: "Request Free Estimate",
       href: "/contact",

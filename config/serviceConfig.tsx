@@ -48,7 +48,7 @@ export const servicesSectionConfig: ServicesSectionConfig = {
   content: {
     badge: "Our Services",
     title: "Expert Remodeling Services for Every Space",
-    description:"At Bathora, we offer a complete range of kitchen and bathroom remodeling services designed to enhance both style and functionality.",
+    description:"At Apex, we offer a complete range of kitchen and bathroom remodeling services designed to enhance both style and functionality.",
     button: {
       label: "Contact us",
       href: "/contact",

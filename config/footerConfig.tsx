@@ -30,7 +30,6 @@ export interface ContactInfoItem {
 export interface FooterContent {
   newsletterTitle: string;
   newsletterDescription: string;
-  brandName: string;
   brandDescription: string;
   companyTitle: string;
   servicesTitle: string;
@@ -52,15 +51,14 @@ export interface FooterConfig {
 
 export const footerConfig: FooterConfig = {
   content: {
-    newsletterTitle: "Build Your Dream Interior With Bathora",
+    newsletterTitle: "Build Your Dream Interior With Apex",
 
     newsletterDescription:
       "Get the latest interior design ideas, renovation insights, and exclusive updates from our kitchen and bathroom remodeling experts.",
 
-    brandName: "Bathora",
 
     brandDescription:
-      "Bathora specializes in premium kitchen and bathroom renovations, delivering modern, elegant, and functional spaces tailored to your lifestyle. We focus on quality craftsmanship, innovative design, and customer satisfaction.",
+      "Apex specializes in premium kitchen and bathroom renovations, delivering modern, elegant, and functional spaces tailored to your lifestyle. We focus on quality craftsmanship, innovative design, and customer satisfaction.",
 
     companyTitle: "Company",
 
@@ -70,7 +68,7 @@ export const footerConfig: FooterConfig = {
 
     subscribeButtonText: "Subscribe",
 
-    copyright: `© ${new Date().getFullYear()} Bathora. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} Apex. All rights reserved.`,
 
     privacyText: "Privacy Policy",
 
@@ -127,7 +125,7 @@ export const footerConfig: FooterConfig = {
     },
     {
       icon: <Mail size={14} className="text-primary" />,
-      label: "info@bathora.com",
+      label: "info@apex.com",
     },
     {
       icon: <Clock size={14} className="text-primary" />,

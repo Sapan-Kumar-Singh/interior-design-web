@@ -96,7 +96,7 @@ const AboutUs = () => {
                             <VideoPlayer src={aboutUsConfig.video.src} />
 
                             {/* STATS + BUTTON */}
-                            <div className="flex flex-col justify-start gap-4">
+                            {/* <div className="flex flex-col justify-start gap-4">
 
                                 <Stats stats={aboutUsConfig.stats} />
 
@@ -109,7 +109,7 @@ const AboutUs = () => {
                                     </Button>
                                 </motion.div>
 
-                            </div>
+                            </div> */}
 
                         </div>
 

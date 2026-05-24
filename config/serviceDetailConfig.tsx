@@ -140,7 +140,7 @@ export const serviceDetailsConfig: Record<string,ServiceDetailsConfig> = {
       heroImageAlt: "Kitchen remodeling",
 
       description: [
-        `At Bathora, we specialize in creating beautiful,
+        `At Apex, we specialize in creating beautiful,
         functional kitchens tailored to your lifestyle.
         Whether you’re looking for a modern upgrade or
         a complete transformation, our team delivers
