@@ -1,4 +1,4 @@
-type InputType = "text" | "email" | "password" | "number" | "tel" | "url" | "search" | "date" | "textarea";
+type InputType = "text" | "email" | "password" | "number" | "tel" | "url" | "search" | "date" | "textarea" | "select";
 export interface InputField {
   label?: string;
   field: string;
@@ -6,7 +6,6 @@ export interface InputField {
 
   required?: boolean;
   placeholder?: string;
-  defaultValue?: string | number;
 
   disabled?: boolean;
   readOnly?: boolean;
@@ -20,6 +19,19 @@ export interface InputField {
 
   rows?: number;
   flex?: number;
+  defaultValue?: string;
+
+  options?: {
+    label: string;
+    value: string;
+  }[];
+  dependsOn?: string;
+  dependentOptions?: {
+    [key: string]: {
+      label: string;    
+      value: string;
+    }[];
+  };
 }
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
     Card,
@@ -27,7 +27,16 @@ const InputForm = (formConfig: InputFormConfig) => {
         onSubmit,
         className,
     } = formConfig;
-    
+
+    const [formValues, setFormValues] = useState<Record<string, string>>({});
+
+    const handleChange = (field: string,value: string) => {
+        setFormValues((prev) => ({
+            ...prev,
+            [field]: value,
+        }))
+    }
+
     return (
         <Card
             className={`
@@ -41,7 +50,7 @@ const InputForm = (formConfig: InputFormConfig) => {
                 shadow-[0_4px_30px_rgba(0,0,0,0.08)]
                 ${className ?? ""}
              `}
-            >
+        >
             <form onSubmit={onSubmit}>
                 <CardHeader className="pb-4 px-0">
                     <CardTitle
@@ -67,7 +76,11 @@ const InputForm = (formConfig: InputFormConfig) => {
                                     width: `calc(${(field.flex ?? 1) * 100}% - 8px)`,
                                 }}
                                 className="w-full md:min-w-0">
-                                {renderFormField(field)}
+                                {renderFormField({
+                                     field,
+                                    formValues,
+                                    handleChange
+                                })}
                             </div>
                         );
                     })}
@@ -81,7 +94,7 @@ const InputForm = (formConfig: InputFormConfig) => {
                         {submitButtonText ?? "Save"}
                         <ArrowUpRight size={14} />
                     </Button>
-                    
+
                     {footer}
                 </CardFooter>
             </form>

@@ -45,9 +45,9 @@ export interface WhyChooseUsConfig {
 
 export const whyChooseUsConfig: WhyChooseUsConfig = {
   content: {
-    badge: "Why Choose Us",
-    title:"The Trusted Choice for Kitchen & Bathroom Remodeling",
-    description:"We combine design expertise, quality craftsmanship, and a client-first approach to deliver exceptional remodeling experiences.",
+    badge: "Why Choose Apex Interiors & Engineering",
+    title:"Delivering Modern Interior and Engineering Solutions with Quality, Precision, and Professional Expertise",
+    description:"With years of industry experience, our skilled engineers and designers deliver premium interior and engineering solutions tailored to your needs. We focus on quality craftsmanship, budget-friendly execution, and on-time project delivery to create spaces that are both functional and visually refined.",
   },
   stats: [
     {

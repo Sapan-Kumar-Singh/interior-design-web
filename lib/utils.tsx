@@ -3,6 +3,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Input } from '@/components/ui/input';
 import { InputField } from '@/types/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 
 const inputStyles = `
@@ -16,8 +17,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+interface RendrerFormFieldType {
+  field: InputField;
+  formValues: any;
+  handleChange: (field: string, value: string) => void
+}
 
-export function renderFormField(field: InputField) {
+export function renderFormField({ field, formValues, handleChange }: RendrerFormFieldType) {
   if (field.hidden) return null;
 
   const commonProps = {
@@ -31,6 +37,20 @@ export function renderFormField(field: InputField) {
     className: cn(inputStyles, field.className),
   };
 
+  const parentValue =
+    field.dependsOn
+      ? formValues[field.dependsOn]
+      : undefined;
+  const options =
+    field.dependentOptions && parentValue
+      ? field.dependentOptions[parentValue] || []
+      : field.options || [];
+
+  const isDisabled = Boolean(
+    field.disabled ||
+    (field.dependsOn && !parentValue)
+  )
+
   const renderInput = () => {
     switch (field.type) {
       case "textarea":
@@ -39,6 +59,39 @@ export function renderFormField(field: InputField) {
             {...commonProps}
             rows={field.rows || 4}
           />
+        );
+
+      case "select":
+        return (
+          <Select
+            value={formValues[field.field] || ""}
+            onValueChange={(value) => {
+              handleChange(field.field, value)
+
+              // reset child select
+              if (field.field === "serviceType") {
+                handleChange("serviceName", "")
+              }
+            }}
+            disabled={isDisabled}
+          >
+            <SelectTrigger>
+              <SelectValue
+                placeholder={field.placeholder}
+              />
+            </SelectTrigger>
+
+            <SelectContent>
+              {options.map((option) => (
+                <SelectItem
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         );
 
       case "email":

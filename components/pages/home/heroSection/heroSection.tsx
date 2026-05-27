@@ -32,15 +32,15 @@ const HeroSection = () => {
                     </div>
                 </div>
             </DynamicBackground>
-            <div className="bg-white pt-8  px-6 sm:px-10 md:px-14 lg:px-20">
+            {/* <div className="bg-white pt-8  px-6 sm:px-10 md:px-14 lg:px-20">
                 <Stats stats={statsDetails} className='bg-cream-dark p-4 m-4 rounded-md' />
-            </div>
+            </div> */}
             <AboutPreview />
             <ServicePreview />
             <GetEstimatePreview />
             <ProjectsPreview />
             <WhyChooseUsPreview />
-            <TestimonialsPreview />
+            {/* <TestimonialsPreview /> */}
             <TransformationShowcasePreview />
         </main>
     )

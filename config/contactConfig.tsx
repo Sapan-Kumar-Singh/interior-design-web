@@ -142,14 +142,96 @@ export const contactConfig: ContactConfig = {
         flex: 0.5,
       },
 
-      {
-        field: "subject",
-        label: "Subject",
-        type: "text",
-        required: true,
-        placeholder: "Subject",
-      },
+       {
+      field: "serviceType",
+      type: "select",
+      placeholder: "Select Service Type",
+      required: true,
+      flex:0.5,
+      options: [
+        {
+          label: "Interior Design",
+          value: "interior-design",
+        },
 
+        {
+          label: "Engineering / Structural",
+          value: "engineering-structural",
+        },
+      ],
+    },
+    {
+      field: "serviceName",
+      type: "select",
+      placeholder: "Select Service",
+      required: true,
+      dependsOn: "serviceType",
+      flex:0.5,
+      dependentOptions: {
+        "interior-design": [
+          {
+            label: "Residential",
+            value: "residential",
+          },
+
+          {
+            label: "Modulor kitchen",
+            value: "modulor-kitchen",
+          },
+
+          {
+            label: "Bedroom interior",
+            value: "bedroom-interior",
+          },
+
+          {
+            label: "Office interior",
+            value: "office-interior",
+          },
+           {
+            label: "Wordrobe design",
+            value: "wardrobe-design",
+          },
+          {
+            label: "False celling design",
+            value: "false-celling-design",
+          },
+            {
+            label: "Restourent / Cafe interior",
+            value: "restourent/cafe-inetrior",
+          },
+        ],
+
+        "engineering-structural": [
+          {
+            label: "Structural design",
+            value: "structural-design",
+          },
+
+          {
+            label: "Building planning",
+            value: "building-planning",
+          },
+
+          {
+            label: "Foundation design",
+            value: "foundation-design",
+          },
+
+          {
+            label: "BOQ & Estimation",
+            value: "BOQ-estimation",
+          }, {
+            label: "Site supervision",
+            value: "site-supervision",
+          }, {
+            label: "Construction consulting",
+            value: "construction-consulting",
+          },
+        ],
+      },
+    },
+       
       {
         field: "message",
         label: "Message",

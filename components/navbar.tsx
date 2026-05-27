@@ -8,13 +8,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { brandName, navLinks } from "@/config/navbarConfig";
+import { navLinks } from "@/config/navbarConfig";
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import BrandName from "./brandName";
 
 

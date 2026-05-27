@@ -47,23 +47,23 @@ const WhyChooseUs = () => {
 
               <motion.h2
                 variants={slideUp}
-                className="text-obsidian font-semibold capitalize leading-[1.1] tracking-[-0.02em] text-3xl sm:text-2xl lg:text-4xl max-w-2xl"
+                className="text-obsidian font-semibold  leading-[1.1]  text-base sm:text-xl lg:text-2xl max-w-2xl"
               >
                  {whyChooseUsConfig.content.title}
               </motion.h2>
 
               <motion.p
                 variants={slideUp}
-                className="text-sm sm:text-base md:text-normal text-gray-600 leading-relaxed max-w-2xl"
+                className="text-sm text-gray-600 leading-relaxed max-w-2xl"
               >
                  {whyChooseUsConfig.content.description}
               </motion.p>
             </div>
 
             {/* STATS */}
-            <motion.div variants={staggerContainerSlow}>
+            {/* <motion.div variants={staggerContainerSlow}>
               <Stats stats={whyChooseUsConfig.stats} />
-            </motion.div>
+            </motion.div> */}
 
             {/* IMAGE */}
             <motion.div

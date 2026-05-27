@@ -19,7 +19,7 @@ const AboutSection = () => {
       <MissionPage />
       <GetEstimateSection/>
       <WhyChooseUs />
-      <TeamMembers />
+      {/* <TeamMembers /> */}
     </>
   )
 }

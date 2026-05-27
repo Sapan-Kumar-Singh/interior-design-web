@@ -23,38 +23,29 @@ export const missionConfig: MissionConfig = {
   sectionTitle: {
     badge: "Our Story, Mission & Vision",
 
-    heading: "Our Journey and What Drives Us Forward",
+    heading: "Creating Spaces That Reflect Modern Living",
 
     description:
-      "Apex was founded with a passion for transforming everyday spaces into beautifully designed, functional environments.",
+      "At Apex Interiors and Engineering, we combine creative interior design with technical expertise to build spaces that are elegant, practical, and thoughtfully engineered.",
   },
 
   highlightCards: [
     {
       icon: <BookOpenText size={40} />,
-
       title: "Our Journey",
-
-      content:
-        "We tailor every project to your lifestyle, preferences, and budget with precision.",
+      content:"We don’t just design spaces, we build experiences that last.",
     },
 
     {
       icon: <Target size={40} />,
-
       title: "Our Mission",
-
-      content:
-        "Only the finest materials make it into your home — beauty that lasts decades.",
+      content:"Not Just Built for Today — Crafted for Generations.",
     },
 
     {
       icon: <Telescope size={40} />,
-
       title: "Our Vision",
-
-      content:
-        "No surprises. Clear quotes, honest timelines, and full accountability.",
+      content:"Engineering Elegance Into Every Corner.",
     },
   ],
 };

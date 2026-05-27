@@ -123,7 +123,7 @@ const AboutUs = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.2 }}
-                    className="space-y-8 relative will-change-transform"
+                    className="space-y-8 relative will-change-transform md:mt-12"
                 >
 
                     {/* IMAGE */}

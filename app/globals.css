@@ -126,6 +126,8 @@
 
   html {
     @apply scroll-smooth;
+    overflow-y: scroll;
+  scrollbar-gutter: stable;
   }
 
   body {
@@ -134,6 +136,7 @@
     font-size: 16px;
     font-weight: 400;
     font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
+    width: 100%;
   }
 
   /* ── Cormorant Garamond — display headings ── */
@@ -251,13 +254,11 @@
     @apply object-cover;
     image-rendering: auto;
   }
-
-  /* ── Selection ── */
-  ::selection {
-    background-color: var(--gold);
-    color: var(--obsidian);
-  }
-
-  /* ── Scrollbar ── */
-  
+  /* select */
+  [data-slot="select-trigger"][data-placeholder]
+[data-slot="select-value"] {
+  color: #B0A898;
 }
+
+}
+
