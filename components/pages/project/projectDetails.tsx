@@ -23,22 +23,27 @@ import {
 import BeforeAfterSlider from "../../transformationSlide";
 import RemodelingBanner from "../../remodelingBanner";
 import { projectDetailsConfig } from "@/config/projectDetailsConfig";
+import { Suspense } from "react";
+import PageHeroSkeleton from "@/components/skeleton/pageHeroSkeleton";
 
-interface ProjectDetailsProps{
-  slug:string;
+interface ProjectDetailsProps {
+  slug: string;
 }
-const ProjectDetails = ({slug}:ProjectDetailsProps) => {
-  const details=projectDetailsConfig[slug];
-  
+const ProjectDetails = ({ slug }: ProjectDetailsProps) => {
+  const details = projectDetailsConfig[slug];
+
 
   return (
     <>
-      <PageHero imgSrc={details.pageHero.imgSrc}>
-        <PageHeroContent
-          title={details.pageHero.title}
-          breadcrumb={details.pageHero.breadcrumb}
-        />
-      </PageHero>
+      <Suspense fallback={<PageHeroSkeleton />}>
+        <PageHero imgSrc={details.pageHero.imgSrc}>
+          <PageHeroContent
+            title={details.pageHero.title}
+            breadcrumb={details.pageHero.breadcrumb}
+          />
+        </PageHero>
+
+      </Suspense>
 
       <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 lg:py-20 space-y-12 lg:space-y-16">
 
@@ -74,10 +79,10 @@ const ProjectDetails = ({slug}:ProjectDetailsProps) => {
             </h1>
 
             <p className="text-body leading-8">
-            {details.overview.descriptions}
+              {details.overview.descriptions}
             </p>
 
-           
+
           </motion.div>
 
           {/* META CARD */}
@@ -128,11 +133,11 @@ const ProjectDetails = ({slug}:ProjectDetailsProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <BeforeAfterSlider 
-          beforeTransformationImgSrc={details.transformation.beforeImage} 
-          afterTransformationImgSrc={details.transformation.afterImage} 
-          afterLabel={details.transformation.afterLabel}
-          beforeLabel={details.transformation.beforeLabel}
+          <BeforeAfterSlider
+            beforeTransformationImgSrc={details.transformation.beforeImage}
+            afterTransformationImgSrc={details.transformation.afterImage}
+            afterLabel={details.transformation.afterLabel}
+            beforeLabel={details.transformation.beforeLabel}
           />
         </motion.div>
 
@@ -259,7 +264,7 @@ const ProjectDetails = ({slug}:ProjectDetailsProps) => {
                 <Card className="border-0 bg-muted/40 rounded-sm">
                   <CardContent className="px-4  py-2">
                     <div className="text-obsidian text-sm">
-                        <span >{detail.label}</span> : <span>{detail.value}</span>
+                      <span >{detail.label}</span> : <span>{detail.value}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -277,11 +282,11 @@ const ProjectDetails = ({slug}:ProjectDetailsProps) => {
           className="space-y-5"
         >
           <h2 className="text-2xl sm:text-3xl font-bold">
-           {details.challenges.title}
+            {details.challenges.title}
           </h2>
 
           <p className="text-body leading-8">
-           {details.challenges.descriptions}
+            {details.challenges.descriptions}
           </p>
 
         </motion.div>

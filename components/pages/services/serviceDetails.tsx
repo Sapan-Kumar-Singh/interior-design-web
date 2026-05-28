@@ -16,13 +16,15 @@ import { motion } from "framer-motion";
 import { slideUp } from "@/lib/animation";
 import { otherServiceConfig, serviceDetailsConfig, serviceHelpCard } from "@/config/serviceDetailConfig";
 import notFound from "@/app/not-found";
+import { Suspense } from "react";
+import PageHeroSkeleton from "@/components/skeleton/pageHeroSkeleton";
 
-interface ServiceDetailsProps{
-  slug:string;
+interface ServiceDetailsProps {
+  slug: string;
 }
-const ServiceDetails = ({slug}:ServiceDetailsProps) => {
- 
-  const service =serviceDetailsConfig[slug];
+const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
+
+  const service = serviceDetailsConfig[slug];
 
   if (!service) {
     notFound();
@@ -31,17 +33,21 @@ const ServiceDetails = ({slug}:ServiceDetailsProps) => {
 
   return (
     <>
-      <PageHero imgSrc={service.pageHero.imgSrc}>
-        <PageHeroContent
-          title={service.pageHero.title}
-          breadcrumb={service.pageHero.breadcrumb}
-         />
-      </PageHero>
+      <Suspense fallback={<PageHeroSkeleton />}>
+        <PageHero imgSrc={service.pageHero.imgSrc}>
+          <PageHeroContent
+            title={service.pageHero.title}
+            breadcrumb={service.pageHero.breadcrumb}
+          />
+        </PageHero>
+      </Suspense>
+
+
 
       {/* MAIN SECTION */}
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
-          
+
           {/* LEFT SIDEBAR */}
           <div className="space-y-8">
 
@@ -118,7 +124,7 @@ const ServiceDetails = ({slug}:ServiceDetailsProps) => {
                   transition={{ delay: 0.1 }}
                   className="mt-4 text-sm leading-6 text-cream/95"
                 >
-                 {serviceHelpCard.description}
+                  {serviceHelpCard.description}
                 </motion.p>
 
                 <motion.div
@@ -129,7 +135,7 @@ const ServiceDetails = ({slug}:ServiceDetailsProps) => {
                   transition={{ delay: 0.2 }}
                 >
                   <Button className="mt-6">
-                   {serviceHelpCard.button.label}
+                    {serviceHelpCard.button.label}
                     {serviceHelpCard.button.icon}
                   </Button>
                 </motion.div>
@@ -236,7 +242,7 @@ const ServiceDetails = ({slug}:ServiceDetailsProps) => {
                   viewport={{ once: true, amount: 0.2 }}
                   className="text-2xl font-semibold mb-4"
                 >
-                 {service.benefitsSection.title}
+                  {service.benefitsSection.title}
                 </motion.h3>
 
                 <div className="grid grid-cols-1 gap-2">
