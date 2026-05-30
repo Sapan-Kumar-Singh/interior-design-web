@@ -16,8 +16,6 @@ import { motion } from "framer-motion";
 import { slideUp } from "@/lib/animation";
 import { otherServiceConfig, serviceDetailsConfig, serviceHelpCard } from "@/config/serviceDetailConfig";
 import notFound from "@/app/not-found";
-import { Suspense } from "react";
-import PageHeroSkeleton from "@/components/skeleton/pageHeroSkeleton";
 
 interface ServiceDetailsProps {
   slug: string;
@@ -33,14 +31,12 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
 
   return (
     <>
-      <Suspense fallback={<PageHeroSkeleton />}>
         <PageHero imgSrc={service.pageHero.imgSrc}>
           <PageHeroContent
             title={service.pageHero.title}
             breadcrumb={service.pageHero.breadcrumb}
           />
         </PageHero>
-      </Suspense>
 
 
 

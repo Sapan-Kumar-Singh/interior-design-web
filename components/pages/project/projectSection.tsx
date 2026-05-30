@@ -1,22 +1,20 @@
-import React, { Suspense } from 'react'
+
 import PageHero from '../../pageHero'
 import PageHeroContent from '../../pageHeroContent';
 import OurProjects from './ourProjects'
 import Testimonials from '../../testimonials/testimonials'
 import TransformationShowcase from '../../transformationShowcase'
 import RemodelingBanner from '../../remodelingBanner'
-import { pageHeroConfig } from '@/config/projectConfig'
-import PageHeroSkeleton from '@/components/skeleton/pageHeroSkeleton';
+import { pageHeroConfig } from '@/config/projectConfig';
 
 
 const ProjectSection = () => {
   return (
     <>
-     <Suspense fallback={<PageHeroSkeleton />}>
          <PageHero imgSrc={pageHeroConfig.imgSrc}>
         <PageHeroContent title={pageHeroConfig.title} breadcrumb={pageHeroConfig.breadcrumb} />
       </PageHero>
-      </Suspense>
+
     
       <OurProjects/>
       <Testimonials/>

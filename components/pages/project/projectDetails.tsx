@@ -2,14 +2,6 @@
 
 import PageHero from "../../pageHero";
 import PageHeroContent from "../../pageHeroContent";
-import {
-  AlarmClock,
-  CircleCheck,
-  House,
-  MapPin,
-  ShieldUser,
-  Sprout,
-} from "lucide-react";
 import { motion } from "framer-motion";
 import { slideUp } from "@/lib/animation";
 import Image from "next/image";
@@ -23,8 +15,6 @@ import {
 import BeforeAfterSlider from "../../transformationSlide";
 import RemodelingBanner from "../../remodelingBanner";
 import { projectDetailsConfig } from "@/config/projectDetailsConfig";
-import { Suspense } from "react";
-import PageHeroSkeleton from "@/components/skeleton/pageHeroSkeleton";
 
 interface ProjectDetailsProps {
   slug: string;
@@ -35,15 +25,12 @@ const ProjectDetails = ({ slug }: ProjectDetailsProps) => {
 
   return (
     <>
-      <Suspense fallback={<PageHeroSkeleton />}>
         <PageHero imgSrc={details.pageHero.imgSrc}>
           <PageHeroContent
             title={details.pageHero.title}
             breadcrumb={details.pageHero.breadcrumb}
           />
         </PageHero>
-
-      </Suspense>
 
       <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 lg:py-20 space-y-12 lg:space-y-16">
 

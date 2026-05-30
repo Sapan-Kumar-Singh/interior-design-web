@@ -7,19 +7,15 @@ import PageHeroContent from '../../pageHeroContent';
 import WhyChooseUs from '../../whyChooseUs';
 import ServiceDetails from './serviceDetails';
 import { pageHeroConfig } from '@/config/serviceConfig';
-import { Suspense } from 'react';
-import PageHeroSkeleton from '@/components/skeleton/pageHeroSkeleton';
 
 const ServiceSection = () => {
 
 
   return (
     <>
-      <Suspense fallback={<PageHeroSkeleton />}>
         <PageHero imgSrc={pageHeroConfig.imgSrc}>
           <PageHeroContent title={pageHeroConfig.title} breadcrumb={pageHeroConfig.breadcrumb} />
         </PageHero>
-      </Suspense>
 
       <ServiceContent />
       <ServiceProcess />
