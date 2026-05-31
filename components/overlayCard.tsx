@@ -22,7 +22,7 @@ const OverlayCard = ({slug,title,description,image}:ServiceItem) => {
     animate={isInView ? "show" : "hidden"}
     initial="hidden"
     transition={{ delay: 0.8 }}
-    className="relative w-full cursor-pointer min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]"
+    className="relative w-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]"
   >
     <div className="absolute inset-0">
       <Image

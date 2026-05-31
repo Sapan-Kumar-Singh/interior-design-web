@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { slideUp } from "@/lib/animation";
 import { otherServiceConfig, serviceDetailsConfig, serviceHelpCard } from "@/config/serviceDetailConfig";
 import notFound from "@/app/not-found";
+import { useRouter } from "next/navigation";
 
 interface ServiceDetailsProps {
   slug: string;
@@ -23,7 +24,7 @@ interface ServiceDetailsProps {
 const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
 
   const service = serviceDetailsConfig[slug];
-
+  const router = useRouter();
   if (!service) {
     notFound();
   }
@@ -31,12 +32,12 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
 
   return (
     <>
-        <PageHero imgSrc={service.pageHero.imgSrc}>
-          <PageHeroContent
-            title={service.pageHero.title}
-            breadcrumb={service.pageHero.breadcrumb}
-          />
-        </PageHero>
+      <PageHero imgSrc={service.pageHero.imgSrc}>
+        <PageHeroContent
+          title={service.pageHero.title}
+          breadcrumb={service.pageHero.breadcrumb}
+        />
+      </PageHero>
 
 
 
@@ -66,14 +67,14 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
                     <motion.div
                       key={serviceOption.slug}
                       variants={slideUp}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: true, amount: 0.2 }}
                       transition={{ delay: index * 0.08 }}
                     >
                       <Button
                         variant="secondary"
                         className="justify-between text-obsidian bg-obsidian/10 hover:bg-gold hover:text-cream w-full"
+                        onClick={() =>
+                          router.push(`/services/${serviceOption.slug}`)
+                        }
                       >
                         {serviceOption.title}
                         <ArrowRight size={18} />
@@ -130,7 +131,10 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Button className="mt-6">
+                  <Button 
+                  className="mt-6"
+                  onClick={()=>router.push('/contact')}
+                  >
                     {serviceHelpCard.button.label}
                     {serviceHelpCard.button.icon}
                   </Button>

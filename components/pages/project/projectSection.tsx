@@ -17,7 +17,7 @@ const ProjectSection = () => {
 
     
       <OurProjects/>
-      <Testimonials/>
+      {/* <Testimonials/> */}
       <TransformationShowcase/>
       <div className='bg-white pb-8 px-4  md:px-18 lg:px-24 m-auto'>
         <RemodelingBanner />

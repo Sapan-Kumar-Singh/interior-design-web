@@ -19,7 +19,7 @@ const ContentCard = ({slug,title,description,image}:ServiceItem) => {
         animate={isInView ? "show" : "hidden"}
         initial="hidden"
         transition={{ delay:0.8 }}
-         className="relative bg-cream-dark flex flex-col h-full w-full cursor-pointer w-full cursor-pointer min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]"
+         className="relative bg-cream-dark flex flex-col h-full w-full  w-full  min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]"
       >
         <div className="px-7 pt-7 pb-5 flex-none">
           <h2 className="text-obsidian text-3xl font-semibold leading-tight mb-3">

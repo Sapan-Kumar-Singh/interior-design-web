@@ -6,8 +6,10 @@ import OverlayCard from '../../overlayCard'
 import { slideLeft, staggerContainerSlow } from '../../../lib/animation'
 import ContentCard from '../../contentCard'
 import { servicesSectionConfig } from '@/config/serviceConfig'
+import { useRouter } from 'next/navigation'
 
 const ServiceContent = () => {
+  const router=useRouter();
   return (
 
     <section className="bg-cream w-full py-8 px-6 sm:px-10 lg:px-20 overflow-hidden">
@@ -34,7 +36,7 @@ const ServiceContent = () => {
           <div className="overflow-hidden">
             <motion.h2
               variants={slideLeft}
-              className="font-semibold text-2xl sm:text-3xl lg:text-3xl font-serif"
+              className="font-bold text-2xl"
             >
               {servicesSectionConfig.content.title}
             </motion.h2>
@@ -60,7 +62,12 @@ const ServiceContent = () => {
 
           <div className="overflow-hidden w-fit">
             <motion.div variants={slideLeft}>
-              <Button>
+              <Button onClick={()=>{
+                  const href=servicesSectionConfig?.content.button?.href;
+                  if(href){
+                    router.push(href);
+                  }
+                }}>
                 {servicesSectionConfig.content.button.label} {servicesSectionConfig.content.button.icon}
               </Button>
             </motion.div>

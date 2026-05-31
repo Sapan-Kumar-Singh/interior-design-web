@@ -47,8 +47,11 @@ import { ArrowUpRight } from "lucide-react";
 export const servicesSectionConfig: ServicesSectionConfig = {
   content: {
     badge: "Our Services",
-    title: "Expert Remodeling Services for Every Space",
-    description:"At Apex, we offer a complete range of kitchen and bathroom remodeling services designed to enhance both style and functionality.",
+
+    title: "Expert Interior & Engineering Solutions",
+
+    description: "At Apex Interiors and Engineering, we provide complete interior design, turnkey execution, and technical engineering services tailored to modern residential and commercial spaces.",
+
     button: {
       label: "Contact us",
       href: "/contact",
@@ -58,53 +61,39 @@ export const servicesSectionConfig: ServicesSectionConfig = {
 
   services: [
     {
-      slug:'kitchen-remodeling',
-      title: "Kitchen Remodeling",
-      description:"Transform your kitchen into a culinary haven. From custom cabinetry to premium countertops, we craft spaces that blend beauty with function.",
-
-      image:
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+      slug: "interior-design-planning",
+      title: "Interior Design & Planning",
+      description:"We create thoughtful and functional interior concepts with space planning, material selection, lighting design, furniture layouts, and modern aesthetics tailored to your lifestyle and vision.",
+      image:"/images/services/interior_design.jpeg",
+      type: "overlay",
+    },
+    {
+      slug: "turnkey-interior-solutions",
+      title: "Turnkey Interior Solutions",
+      description:"From concept to completion, we handle every aspect of your interior project including execution, site coordination, custom furnishings, finishing, and project management for a hassle-free experience.",
+      image:"/images/services/turnkey_interior.png",
+      type: "content",
+    },
+    {
+      slug: "engineering-technical-services",
+      title: "Engineering & Technical Services",
+      description:"Our engineering services include structural planning, technical drawings, site supervision, drafting, and construction support to ensure safe, efficient, and high-quality project execution.",
+      image:"/images/services/engineering_technical_service.png",
 
       type: "overlay",
     },
 
     {
-      slug:'bathroom-renovation',
-      title: "Bathroom Renovation",
-      description:
-        "Elevate your daily ritual with spa-inspired bathroom designs. Every fixture, tile, and fitting chosen for enduring elegance.",
+      slug: "renovation-remodeling",
 
-      image:
-        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
-
-      type:"content",
-    },
-
-    {
-      slug:'living-room-design',
-
-      title: "Living Room Design",
+      title: "Renovation & Remodeling",
 
       description:
-        "Create living spaces that breathe. Open layouts, natural light, and artful furniture arrangements for the modern home.",
+        "Upgrade your existing spaces with modern renovation solutions including kitchen remodeling, bathroom upgrades, false ceilings, wall finishes, flooring, and complete space transformations.",
 
-      image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+      image:"/images/services/renovation_remodeling.png",
 
-      type: "overlay",
-    },
-
-    {
-      slug:'outdoor-spaces',
-      title: "Outdoor Spaces",
-
-      description:
-        "Extend your living area outdoors with seamless patios, decks, and garden retreats designed for year-round enjoyment.",
-
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-
-      type:"content",
+      type: "content",
     },
   ],
 };
