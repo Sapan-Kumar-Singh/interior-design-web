@@ -13,8 +13,10 @@ import {
 
 import { formConfig, heroContent } from "@/config/homeCofig";
 import InputForm from "@/components/inputForm";
+import { useRouter } from "next/navigation";
 
 export default function HeroContent() {
+  const router=useRouter();
   return (
     <>
       <motion.div
@@ -81,6 +83,7 @@ export default function HeroContent() {
               <Button
                 variant="outline"
                 className="text-cream hover:text-cream bg-transparent hover:bg-transparent"
+                onClick={()=>router.push(heroContent.secondaryButton.href)}
               >
                 {heroContent.secondaryButton.label}
                 <ArrowUpRight size={12} />

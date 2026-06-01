@@ -6,12 +6,13 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { imageReveal, slideUp, staggerContainerSlow } from '../lib/animation'
 import { remodelingBannerConfig } from '@/config/remodelingConfig'
+import { useRouter } from 'next/navigation'
 
 
 const RemodelingBanner = () => {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
-
+    const router=useRouter();
     return (
         <>
             <section ref={sectionRef} className="relative w-full   overflow-hidden rounded-xl">
@@ -60,7 +61,7 @@ const RemodelingBanner = () => {
 
                     <div className="overflow-hidden inline-block">
                         <motion.div variants={slideUp}>
-                            <Button className="mt-6">
+                            <Button className="mt-6" onClick={()=>router.push(remodelingBannerConfig?.content?.button?.href ?? "/")}>
                             {remodelingBannerConfig.content.button.label} {remodelingBannerConfig.content.button.icon}
                             </Button>
                         </motion.div>

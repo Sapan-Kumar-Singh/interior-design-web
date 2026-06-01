@@ -51,7 +51,7 @@ export const heroContent: HeroContent = {
   secondaryButton: {
 
     label: "View Our Projects",
-    href: "#",
+    href: "/projects",
   },
 };
 

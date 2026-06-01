@@ -15,13 +15,18 @@ import {
 import BeforeAfterSlider from "../../transformationSlide";
 import RemodelingBanner from "../../remodelingBanner";
 import { projectDetailsConfig } from "@/config/projectDetailsConfig";
+import NotFound from "@/app/not-found";
 
 interface ProjectDetailsProps {
   slug: string;
 }
 const ProjectDetails = ({ slug }: ProjectDetailsProps) => {
-  const details = projectDetailsConfig[slug];
 
+  console.log("slug--",slug);
+  const details = projectDetailsConfig[slug];
+   if(!details){
+    return <NotFound/>
+   }
 
   return (
     <>

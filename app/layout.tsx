@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "./footer";
-import { WhatsappIcon } from "@/components/icons/customIcons";
+import WhatsAppButton from "@/components/whatsApp";
+
 
 
 const geistSans = Geist({
@@ -33,19 +34,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
-        <div className="fixed right-2 bottom-5 z-50 bg-white p-2 rounded-md">
-          <a
-            href="https://wa.me/919876543210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-md bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-300"
-          >
-            <WhatsappIcon className="w-6 h-6 text-white fill-current" />
-          </a>
-        </div>
+        
         <main className="flex-1">
           {children}
         </main>
+        <WhatsAppButton/>
         <Footer />
       </body>
     </html>

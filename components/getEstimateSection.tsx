@@ -10,9 +10,10 @@ import {
 } from "../lib/animation";
 
 import { estimateSectionConfig } from "@/config/getEstimateConfig";
+import { useRouter } from "next/navigation";
 
 const GetEstimateSection = () => {
-
+  const router=useRouter();
   return (
     <section
       className="
@@ -88,7 +89,7 @@ const GetEstimateSection = () => {
             variants={slideUp}
             className="mt-6 sm:mt-8 flex justify-center"
           >
-            <Button>
+            <Button onClick={()=>router.push('/contact')}>
               {estimateSectionConfig.button.label}
 
               {estimateSectionConfig.button.icon}

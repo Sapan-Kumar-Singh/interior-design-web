@@ -81,7 +81,7 @@ export const contactConfig: ContactConfig = {
     {
       icon: <PhoneCall size={18} />,
       label: "Call Now",
-      value: "(123) 456-7890",
+      value: "+91 9667675127",
     },
 
     {
