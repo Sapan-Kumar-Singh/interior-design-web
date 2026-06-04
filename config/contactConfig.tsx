@@ -93,7 +93,7 @@ export const contactConfig: ContactConfig = {
     {
       icon: <MapPin size={18} />,
       label: "Office Location",
-      value: "123 Modern Lane, Design City",
+      value: "MCC Signature Heights, Raj Nagar Extension, Ghaziabad",
     },
 
     {
@@ -245,8 +245,8 @@ export const contactConfig: ContactConfig = {
     submitButtonText: "Send Message",
   },
 
-  map: {
-    mapUrl:
-      "https://maps.google.com/maps?width=675&height=400&hl=en&q=Ghaziabad&t=&z=14&ie=UTF8&iwloc=B&output=embed",
-  },
+ map: {
+  mapUrl:
+    "https://maps.google.com/maps?width=675&height=400&hl=en&q=MCC Signature Heights, Raj Nagar Extension, Ghaziabad&t=&z=14&ie=UTF8&iwloc=B&output=embed",
+},
 };
