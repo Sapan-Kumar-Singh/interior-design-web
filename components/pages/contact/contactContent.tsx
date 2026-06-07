@@ -8,16 +8,18 @@ import {
   CardDescription,
   CardHeader,
 } from "../../ui/card"
-import { fadeUpReveal,staggerContainer } from "@/lib/animation"
-import InputForm from "../../inputForm"
-
-
-import { contactConfig} from "@/config/contactConfig"
-
+import { fadeUpReveal, staggerContainer } from "@/lib/animation"
+import InputForm from "../../inputForm";
+import { contactConfig } from "@/config/contactConfig";
 
 const ContactContent = () => {
+
+  const { hero, contactOptions, contactImage, formConfig, map } = contactConfig;
  
-  const {hero,contactOptions,contactImage,formConfig,map}=contactConfig;
+
+
+  
+
   return (
     <main className="bg-white overflow-hidden">
       {/* HERO SECTION */}
@@ -76,7 +78,7 @@ const ContactContent = () => {
               max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl
             "
           >
-          {hero.description}
+            {hero.description}
           </motion.p>
         </motion.div>
 
@@ -182,6 +184,11 @@ const ContactContent = () => {
               alt={contactImage.alt}
               fill
               className="object-cover rounded-2xl"
+               sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
             />
           </motion.div>
 
@@ -197,7 +204,9 @@ const ContactContent = () => {
               title={formConfig.title}
               description={formConfig.description}
               inputFields={formConfig.inputFields}
-              submitButtonText={formConfig.submitButtonText}
+              submitButtonText={
+                  formConfig.submitButtonText
+              }
             />
           </motion.div>
         </motion.div>

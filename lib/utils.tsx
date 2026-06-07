@@ -57,7 +57,11 @@ export function renderFormField({ field, formValues, handleChange }: RendrerForm
         return (
           <Textarea
             {...commonProps}
+            value={formValues[field.field] ?? ""}
             rows={field.rows || 4}
+            onChange={(e) =>
+              handleChange(field.field, e.target.value)
+            }
           />
         );
 
@@ -107,6 +111,10 @@ export function renderFormField({ field, formValues, handleChange }: RendrerForm
           <Input
             type={field.type || "text"}
             {...commonProps}
+            value={formValues[field.field] ?? ""}
+            onChange={(e) => {
+              handleChange(field.field, e.target.value);
+            }}
           />
         );
     }
@@ -114,7 +122,6 @@ export function renderFormField({ field, formValues, handleChange }: RendrerForm
 
   return (
     <div
-      key={field.field}
       className={cn("space-y-1", field.wrapperClassName)}
     >
       {field.label && (

@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "./footer";
 import WhatsAppButton from "@/components/whatsApp";
-
+import { Toaster } from "sonner";
 
 
 const geistSans = Geist({
@@ -40,6 +40,10 @@ export default function RootLayout({
         </main>
         <WhatsAppButton/>
         <Footer />
+         <Toaster
+          position="bottom-right"
+          richColors
+        />
       </body>
     </html>
   );

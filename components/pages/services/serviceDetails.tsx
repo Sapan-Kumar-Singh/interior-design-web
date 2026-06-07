@@ -98,6 +98,11 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
                 alt={serviceHelpCard.background.alt}
                 fill
                 className="object-cover"
+                 sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
               />
 
               <div className="absolute inset-0 bg-obsidian/40" />
@@ -159,6 +164,11 @@ const ServiceDetails = ({ slug }: ServiceDetailsProps) => {
                 alt={service.content.heroImageAlt}
                 fill
                 className="object-cover"
+                 sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
               />
             </motion.div>
 

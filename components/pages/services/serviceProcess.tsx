@@ -13,13 +13,6 @@ const ServiceProcess = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
-  const processConfig = [
-    { srNo: "01", title: "Consultation", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar" },
-    { srNo: "02", title: "Design & Planning", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar" },
-    { srNo: "03", title: "Construction", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar" },
-    { srNo: "04", title: "Final Delivery", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar" },
-  ];
-
   return (
     <section ref={sectionRef} className="relative w-full overflow-hidden  p-12">
 
@@ -36,6 +29,11 @@ const ServiceProcess = () => {
           fill
           priority
           className="object-cover"
+           sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
         />
       </motion.div>
 
@@ -91,7 +89,7 @@ const ServiceProcess = () => {
               key={process.srNo}
               variants={slideUp}
             >
-              <Card className="rounded-lg border-0 text-cream p-2 lg:p-4 bg-linear-to-t from-cream to-cream/80">
+              <Card className="rounded-lg w-full border-0 text-cream p-2 lg:p-4 bg-linear-to-t from-cream to-cream/80">
                 <CardContent>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div className="flex gap-4 lg:gap-8 shrink-0">

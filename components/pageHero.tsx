@@ -37,8 +37,12 @@ const PageHero = ({
           alt={alt}
           fill
           priority={priority}
-          sizes="100vw"
           className="object-cover"
+           sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
         />
 
         <div

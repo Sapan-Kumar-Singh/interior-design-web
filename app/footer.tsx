@@ -40,7 +40,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                         className="text-cream/80 text-sm sm:text-base leading-relaxed"
                     >
-                      {content.newsletterDescription}
+                      {content?.newsletterDescription}
                     </motion.p>
 
                     {/* INPUT + BUTTON */}

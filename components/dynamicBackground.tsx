@@ -28,47 +28,51 @@ export default function DynamicBackground({
     <section className="relative min-h-screen overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-  <AnimatePresence mode="sync">
-    <motion.div
-      key={index}
-      className="absolute inset-0"
-      initial={{
-        opacity: 0,
-        scale: 1,
-      }}
-      animate={{
-        opacity: 1,
-        scale: 1.5,
-      }}
-      exit={{
-        opacity: 0,
-        scale: 1.5, // keep same scale on exit
-      }}
-      transition={{
-        opacity: {
-          duration: 1.2,
-          ease: "easeInOut",
-        },
-        scale: {
-          duration: 6,
-          ease: "linear",
-        },
-      }}
-    >
-      <Image
-        src={slidesImages[index].src}
-        alt={slidesImages[index]?.alt ?? "Background image"}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-    </motion.div>
-  </AnimatePresence>
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={index}
+            className="absolute inset-0"
+            initial={{
+              opacity: 0,
+              scale: 1,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1.5,
+            }}
+            exit={{
+              opacity: 0,
+              scale: 1.5, // keep same scale on exit
+            }}
+            transition={{
+              opacity: {
+                duration: 1.2,
+                ease: "easeInOut",
+              },
+              scale: {
+                duration: 6,
+                ease: "linear",
+              },
+            }}
+          >
+            <Image
+              src={slidesImages[index].src}
+              alt={slidesImages[index]?.alt ?? "Background image"}
+              fill
+              priority
+              sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
+              className="object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-obsidian/40" />
-</div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-obsidian/40" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 flex-1">

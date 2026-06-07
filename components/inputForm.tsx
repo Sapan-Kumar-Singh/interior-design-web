@@ -15,6 +15,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { renderFormField } from "@/lib/utils";
 import { InputFormConfig } from "@/types/form";
+import { toast } from "sonner";
 
 
 const InputForm = (formConfig: InputFormConfig) => {
@@ -29,7 +30,7 @@ const InputForm = (formConfig: InputFormConfig) => {
     } = formConfig;
 
     const [formValues, setFormValues] = useState<Record<string, string>>({});
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const handleChange = (field: string,value: string) => {
         setFormValues((prev) => ({
             ...prev,
@@ -37,6 +38,42 @@ const InputForm = (formConfig: InputFormConfig) => {
         }))
     }
 
+    const handleSubmit = async () => {
+    try {
+      setIsSubmitting(true);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error();
+      }
+
+      toast.success(
+        "Thank you! Your inquiry has been sent successfully.",
+        {
+          duration: 4000,
+        }
+      );
+    } catch (error) {
+      toast.error(
+        "Unable to send your inquiry. Please try again.",
+        {
+          duration: 4000,
+        }
+      );
+    } finally {
+      setIsSubmitting(false);
+      setFormValues({});
+    }
+  };
+  
     return (
         <Card
             className={`
@@ -51,7 +88,11 @@ const InputForm = (formConfig: InputFormConfig) => {
                 ${className ?? ""}
              `}
         >
-            <form onSubmit={onSubmit}>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+                onSubmit?.(formValues);
+            }}>
                 <CardHeader className="pb-4 px-0">
                     <CardTitle
                         className="font-semibold text-xl sm:text-2xl text-obsidian">
@@ -91,8 +132,7 @@ const InputForm = (formConfig: InputFormConfig) => {
                     <Button
                         type="submit"
                         className="w-full sm:w-full">
-                        {submitButtonText ?? "Save"}
-                        <ArrowUpRight size={14} />
+                        {isSubmitting ? "Sending..."  : submitButtonText}
                     </Button>
 
                     {footer}

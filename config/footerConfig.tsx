@@ -29,7 +29,7 @@ export interface ContactInfoItem {
 
 export interface FooterContent {
   newsletterTitle: string;
-  newsletterDescription: string;
+  newsletterDescription?: string;
   brandDescription: string;
   companyTitle: string;
   servicesTitle: string;
@@ -51,14 +51,10 @@ export interface FooterConfig {
 
 export const footerConfig: FooterConfig = {
   content: {
-    newsletterTitle: "Build Your Dream Interior With Apex",
-
-    newsletterDescription:
-      "Get the latest interior design ideas, renovation insights, and exclusive updates from our kitchen and bathroom remodeling experts.",
-
+    newsletterTitle: "Build Your Dream Interior With Apex Interiors & Engineering",
 
     brandDescription:
-      "Apex specializes in premium kitchen and bathroom renovations, delivering modern, elegant, and functional spaces tailored to your lifestyle. We focus on quality craftsmanship, innovative design, and customer satisfaction.",
+      "Apex Interiors & Engineering Creating inspiring spaces through thoughtful design, quality craftsmanship, and attention to detail.",
 
     companyTitle: "Company",
 
@@ -84,11 +80,10 @@ export const footerConfig: FooterConfig = {
   ],
 
   services: [
-    { label: "Kitchen Remodeling", href: "/services/kitchen" },
-    { label: "Bathroom Renovation", href: "/services/bathroom" },
-    { label: "Custom Cabinetry", href: "/services/cabinetry" },
-    { label: "Tile & Flooring", href: "/services/flooring" },
-    { label: "Lighting & Fixtures", href: "/services/lighting" },
+    { label: "Interior Design & Planning", href: "/services/interior-design-planning" },
+    { label: "Turnkey Interior Solutions", href: "/services/turnkey-interior-solutions" },
+    { label: "Engineering & Technical Services", href: "/services/engineering-technical-services" },
+    { label: "Renovation & Remodeling", href: "/services/renovation-remodeling" },
   ],
 
   socialIcons: [
@@ -117,15 +112,15 @@ export const footerConfig: FooterConfig = {
   contactInfo: [
     {
       icon: <MapPin size={14} className="text-primary" />,
-      label: "123 Modern Lane, Design City, USA",
+      label: "MCC Signature Heights, Raj Nagar Extension, Ghaziabad",
     },
     {
       icon: <Phone size={14} className="text-primary" />,
-      label: "+91-333344455",
+      label: "+91-9667675127",
     },
     {
       icon: <Mail size={14} className="text-primary" />,
-      label: "info@apex.com",
+      label: "info.apexied@gmail.com",
     },
     {
       icon: <Clock size={14} className="text-primary" />,

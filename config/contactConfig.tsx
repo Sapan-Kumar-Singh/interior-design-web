@@ -87,7 +87,7 @@ export const contactConfig: ContactConfig = {
     {
       icon: <Mail size={18} />,
       label: "Email Us",
-      value: "info@apex.com",
+      value: "info.apexied@gmail.com",
     },
 
     {

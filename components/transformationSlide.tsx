@@ -3,19 +3,19 @@ import Image from "next/image";
 import { BackwardTriangleIcon, ForwardTriangleIcon } from "./icons/customIcons";
 
 interface TransformationSlideProps {
-  beforeTransformationImgSrc: string;
-  afterTransformationImgSrc: string;
-  beforeLabel?: string;
-  afterLabel?: string;
+    beforeTransformationImgSrc: string;
+    afterTransformationImgSrc: string;
+    beforeLabel?: string;
+    afterLabel?: string;
 }
 const TransformationSlide = ({
     beforeTransformationImgSrc,
     afterTransformationImgSrc,
     beforeLabel,
     afterLabel
-}:TransformationSlideProps) => {
+}: TransformationSlideProps) => {
     const [position, setPosition] = useState(50)
-     
+
     return (
         <div
             className="relative w-full h-[200px] sm:h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-2xl">
@@ -26,6 +26,11 @@ const TransformationSlide = ({
                     alt="After Transformation Image"
                     fill
                     className="object-cover"
+                    sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
                 />
             </div>
 
@@ -41,6 +46,11 @@ const TransformationSlide = ({
                     alt="Before Transformation Image"
                     fill
                     className="object-cover"
+                    sizes="
+               (max-width: 768px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw
+             "
                 />
                 <div className="absolute inset-0 bg-obsidian/40" />
             </div>

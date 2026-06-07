@@ -64,7 +64,7 @@ export const formConfig: InputFormConfig = {
 
   inputFields: [
     {
-      field: "name",
+      field: "fullName",
       type: "text",
       placeholder: "Your Name",
       required: true,
@@ -77,7 +77,7 @@ export const formConfig: InputFormConfig = {
       flex: 1,
     },
     {
-      field: "phone",
+      field: "phoneNumber",
       type: "tel",
       placeholder: "Phone Number",
       required: true,
