@@ -18,55 +18,68 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apexied.in"),
+  metadataBase: new URL("https://www.apexied.in"),
 
   title: {
-    default: "Apex Interiors & Engineering",
+    default: "Apex Interiors & Engineering | Interior Design & Construction in Ghaziabad",
     template: "%s | Apex Interiors & Engineering",
   },
 
   description:
-    "Apex Interiors & Engineering provides interior design, modular kitchen design, bedroom interiors, office interiors, structural design, building planning, foundation design, BOQ estimation, and construction consulting services in Ghaziabad.",
+    "Apex Interiors & Engineering offers premium interior design, modular kitchens, bedroom interiors, office interiors, structural engineering, construction planning, BOQ estimation and consulting services in Ghaziabad.",
 
   keywords: [
-    "Interior Design Ghaziabad",
-    "Modular Kitchen Ghaziabad",
-    "Bedroom Interior Design",
-    "Office Interior Design",
+    "Interior Designer Ghaziabad",
+    "Interior Designer Raj Nagar Extension",
+    "Home Interior Design",
+    "Modular Kitchen",
+    "Bedroom Interior",
     "Wardrobe Design",
-    "False Ceiling Design",
-    "Restaurant Interior Design",
-    "Structural Design",
-    "Building Planning",
-    "Foundation Design",
+    "False Ceiling",
+    "Living Room Design",
+    "Office Interior",
+    "Restaurant Interior",
+    "Structural Engineer",
+    "Construction Consultant",
     "BOQ Estimation",
-    "Construction Consulting",
-    "Civil Engineering Services",
-    "Raj Nagar Extension",
-    "Ghaziabad Interior Designer",
   ],
 
-  authors: [
-    {
-      name: "Apex Interiors & Engineering",
-    },
-  ],
-
-  creator: "Apex Interiors & Engineering",
-
-  openGraph: {
-    title: "Apex Interiors & Engineering",
-    description:
-      "Interior Design and Structural Engineering solutions in Ghaziabad.",
-    url: "https://apexied.in",
-    siteName: "Apex Interiors & Engineering",
-    locale: "en_IN",
-    type: "website",
+  alternates: {
+    canonical: "https://www.apexied.in",
   },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    title: "Apex Interiors & Engineering",
+    description:
+      "Professional Interior Design & Structural Engineering Services.",
+    url: "https://www.apexied.in",
+    siteName: "Apex Interiors & Engineering",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Apex Interiors & Engineering",
+    description:
+      "Interior Design & Structural Engineering Services.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -98,19 +111,30 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": "HomeAndConstructionBusiness",
               name: "Apex Interiors & Engineering",
+              url: "https://www.apexied.in",
+              image: "https://www.apexied.in/og-image.jpg",
               telephone: "+91-9667675127",
               email: "info.apexied@gmail.com",
+              priceRange: "₹₹",
+
               address: {
                 "@type": "PostalAddress",
-                streetAddress:
-                  "MCC Signature Heights, Raj Nagar Extension",
+                streetAddress: "MCC Signature Heights, Raj Nagar Extension",
                 addressLocality: "Ghaziabad",
+                addressRegion: "Uttar Pradesh",
+                postalCode: "201017",
                 addressCountry: "IN",
               },
-              url: "https://apexied.in",
-            }),
+
+              areaServed: [
+                "Ghaziabad",
+                "Noida",
+                "Greater Noida",
+                "Delhi NCR",
+              ],
+            }).replace(/</g, "\\u003c"),
           }}
         />
       </body>
