@@ -19,7 +19,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.apexied.in"),
-
   title: {
     default: "Apex Interiors & Engineering | Interior Design & Construction in Ghaziabad",
     template: "%s | Apex Interiors & Engineering",
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.apexied.in",
+    canonical: "/", // This forces Next.js to append the current path dynamically or keep it clean
   },
 
   robots: {

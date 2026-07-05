@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Projects  | Apex Interiors & Engineering",
+  alternates: { canonical: "/projects" },
   description:
     "Contact Apex Interiors & Engineering for interior design and engineering services.",
 };
